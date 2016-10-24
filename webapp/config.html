@@ -13,35 +13,53 @@
 <body>
 
 <div id="config" class="container">
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">HearBoi</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li><a href="index.html">Home</a></li>
-        <li class="active"><a href="#">Device Configuration</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Account
-          <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Billing</a></li>
-            <li><a href="#">User Settings</a></li>
-            <li><a href="#">Logout</a></li> 
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </nav>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">HearBoi</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="#">Device Configuration</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Account<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Billing</a></li>
+                        <li><a href="#">User Settings</a></li>
+                        <li><a href="#">Logout</a></li> 
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="row text-center"><h2>Network</h2></div>
 
-  <div class="row">
-    <div class="col-md-6"><label for="audioFile">Upload Audio File:</label></div>
-    <div class="col-md-6"><input type="file" id="audioFile" class="form-control"/></div>
-  </div>
-  <div class="row">
-    <div class="col-md-6"><label for="phoneNumber">SMS for Notifications:</label></div>
-    <div class="col-md-6"><input type="text" id="phoneNumber" class="form-control"/></div>
-  </div>
+    <div class="row">
+        <div class="col-md-3"><label for="phoneNumber">Phone Number (SMS):</label></div>
+        <div class="col-md-3"><input type="text" id="phoneNumber" class="form-control"/></div>
+
+        <div class="col-md-3"><label for="macAddress">HearBoi MAC Address:</label></div>
+        <div class="col-md-3"><input type="text" id="macAddress" class="form-control"/></div>
+    </div>
+
+    <div class="row text-center"><h2>Audio</h2></div>
+
+    <div class="row">
+        <div class="col-md-3"><label for="profile">Audio Profile:</label></div>
+        <div class="col-md-3">
+            <select class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+
+        <div class="col-md-3"><label for="audioFile">Audio File:</label></div>
+        <div class="col-md-3"><input type="file" id="audioFile" class="form-control"/></div>
+    </div>
+
 </div>
 
 </body>
