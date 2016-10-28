@@ -20,7 +20,7 @@
 		    </div>
 		    <ul class="nav navbar-nav">
 		     	<li class="active"><a href="#">Home</a></li>
-		     	<li><a href="<?=base_url();?>config">Device Configuration</a></li>
+		     	<li><a href="<?=base_url();?>device/config">Device Configuration</a></li>
 		     	<li class="dropdown">
 		        	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Account
 		    		<span class="caret"></span></a>
@@ -34,8 +34,8 @@
 		</div>
 	</nav>
 	<div class="row">
-		<div class="col-md-8"><img src="sketch.jpg"/></div>
-		<div class="col-md-4"><img src="render.jpg"/></div>
+		<div class="col-md-8"><img src="<?=base_url();?>images/sketch.jpg"/></div>
+		<div class="col-md-4"><img src="<?=base_url();?>images/render.jpg"/></div>
 	</div>
 
 	<footer>

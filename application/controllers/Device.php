@@ -1,6 +1,6 @@
 <?php
 
-class Hearboi extends CI_Controller {
+class Device extends CI_Controller {
 	function __construct() {
 		// Call the Controller constructor
     	parent::__construct();
@@ -21,7 +21,25 @@ class Hearboi extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index() {
-		$this->load->view('main');
+		$this->load->view('config');
 	}
 
+	public function config() {
+		$this->load->view('config');
+	}
+
+	public function doorbell(){
+		$this->load->library('sms/TextMagicAPI');
+		$api = new TextMagicAPI(array(
+		    "username" => "tsyew", 
+		    "password" => "JsOg2Lf2eF"
+		));
+
+		$text = "Interactive Device Design SMS Gateway Test";
+
+		// Use this number for testing purposes. This is absolutely free.
+		$phones = array(13105337308);
+
+		$results = $api->send($text, $phones, true);
+	}
 }
