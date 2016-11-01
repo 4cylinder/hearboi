@@ -18,7 +18,7 @@
 	</div>
 	<br/>
 	<div class="row text-center">
-		<a href="<?=base_url();?>device/home" class="btn btn-default btn-block" role="button">Enter</a>
+		<a href="<?=base_url();?>device" class="btn btn-default btn-block" role="button">Enter</a>
 	</div>
 </div>
 
