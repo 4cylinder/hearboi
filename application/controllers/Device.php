@@ -20,8 +20,8 @@ class Device extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index() {
-		$this->load->view('config');
+	public function home() {
+		$this->load->view('home');
 	}
 
 	public function config() {
@@ -41,5 +41,6 @@ class Device extends CI_Controller {
 		$phones = array(13105337308);
 
 		$results = $api->send($text, $phones, true);
+		echo json_encode($results);
 	}
 }
