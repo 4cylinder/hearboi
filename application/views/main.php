@@ -13,7 +13,7 @@
 <body>
 
 <div id="main" class="container">
-	<div class="row">
+	<div class="row text-center">
 		<img src="<?=base_url();?>images/homescreen.jpg"/>
 	</div>
 	<br/>
