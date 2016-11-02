@@ -12,18 +12,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	
 </head>
-<style>
-.navbar-brand {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    text-align: center;
-    margin:0 auto;
-}
-.navbar-toggle {
-    z-index:3;
-}
-</style>
 <body>
 
 
@@ -47,7 +35,11 @@
 	</div>
 </nav>
 
-<div id="home" class="container">
+<div class="container">
+	<!-- PHP code to insert here later to loop through session data and display current devices-->
+	<div class="row text-center">
+		<a href="<?=base_url();?>device/newDevice" class="btn btn-primary" role="button">Add Device</a>
+	</div>
 </div>
 
 </body>

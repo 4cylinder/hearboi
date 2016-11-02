@@ -34,7 +34,7 @@ class Device extends CI_Controller {
 		$this->load->view('newDevice');
 	}
 
-	// save device details
+	// save device details (grab data from AJAX)
 	public function saveDevice(){
 
 	}
@@ -61,7 +61,7 @@ class Device extends CI_Controller {
 		$this->load->view('profile');
 	}
 
-	// save user details
+	// save user details (grab data from AJAX)
 	public function saveUser() {
 
 	}
