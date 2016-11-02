@@ -30,7 +30,7 @@ class Device extends CI_Controller {
 	}
 
 	// load view for edit device page
-	public function new() {
+	public function newDevice() {
 		$this->load->view('newDevice');
 	}
 
