@@ -19,15 +19,14 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>    
-		<span class="navbar-brand">MY HOME</span>
+		<span class="navbar-brand">PROFILE</span>
 	</div>
 	<div class="navbar-collapse collapse">
 		<ul class="nav navbar-nav navbar-left">
-			<li><a href="<?=base_url();?>">EDIT</a></li>
+			<li><a id='backLink' href="<?=base_url();?>device">BACK</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
-			<li><a href="<?=base_url();?>device/user"><span class="glyphicon glyphicon-user"></span></a></li>
+			<li><a id='saveLink' href="#">SAVE</a></li>
 		</ul>
 	</div>
 </nav>
@@ -37,12 +36,34 @@
 	<div class="row text-center">
 		<img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
 		<h6>Change Profile Photo</h6>
-		<input class="form-control" type="file" name="profilePic" id="profilePic">
+		<input class="form-control input-small" type="file" name="profilePic" id="profilePic">
 	</div>
-	<div class="row">
+	<div class="form-group">
+		<div class="col-md-2"><label class="control-label">NAME</label></div>
+		<div class="col-md-2"><input class="form-control input-sm" placeholder="FIRST NAME" type="text" name="fName" id="fName"></div>
+		<div class="col-md-2"><input class="form-control input-sm" placeholder="LAST NAME" type="text" name="lName" id="lName"></div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-2"><label class="control-label">EMAIL</label></div>
+		<div class="col-md-4"><input class="form-control input-sm" placeholder="EXAMPLE@DOMAIN.COM" type="text" name="email" id="email"></div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-2"><label class="control-label">PHONE</label></div>
+		<div class="col-md-4"><input class="form-control input-sm" placeholder="123-456-7890" type="text" name="phone" id="phone"></div>
+	</div>
 		
-	</div>
 </div>
 </form>
-
+<script>
+$(function(){
+	// listener for BACK link to pop up
+	$('#backLink').click(function(e){
+		e.preventDefault();
+	});
+	// listener for SAVE link to validate form fields and send AJAX request to back end
+	$('#saveLink').click(function(e){
+		e.preventDefault();
+	});
+})
+</script>
 </body>
