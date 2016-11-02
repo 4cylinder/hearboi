@@ -1,4 +1,5 @@
 <html>
+<title>Hearboi Dashboard</title>
 <head>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -32,15 +33,15 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>    
-		<a class="navbar-brand" href="<?=base_url();?>">MY HOME</a>
+		<span class="navbar-brand">MY HOME</span>
 	</div>
 	<div class="navbar-collapse collapse">
 		<ul class="nav navbar-nav navbar-left">
-			<li><a href="#about">EDIT</a></li>
+			<li><a href="<?=base_url();?>">EDIT</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
-			<li><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>
+			<li><a href="<?=base_url();?>device/user"><span class="glyphicon glyphicon-user"></span></a></li>
 		</ul>
 	</div>
 </nav>

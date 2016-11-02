@@ -24,10 +24,22 @@ class Device extends CI_Controller {
 		$this->load->view('home');
 	}
 
-	public function config() {
-		$this->load->view('config');
+	// load view for new device page
+	public function edit() {
+		$this->load->view('editDevice');
 	}
 
+	// load view for edit device page
+	public function new() {
+		$this->load->view('newDevice');
+	}
+
+	// save device details
+	public function saveDevice(){
+
+	}
+
+	// Call SMS Gateway to send alert text
 	public function doorbell(){
 		$this->load->library('sms/TextMagicAPI');
 		$api = new TextMagicAPI(array(
@@ -42,5 +54,15 @@ class Device extends CI_Controller {
 
 		$results = $api->send($text, $phones, true);
 		echo json_encode($results);
+	}
+
+	// load view for profile edit page
+	public function user() {
+		$this->load->view('profile');
+	}
+
+	// save user details
+	public function saveUser() {
+
 	}
 }
