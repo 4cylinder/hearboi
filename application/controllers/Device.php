@@ -37,7 +37,6 @@ class Device extends CI_Controller {
 	public function newDevice() {
 		$data['title'] = "NEW DEVICE";
 		$this->load->view('deviceForm', $data);
-		redirect(base_url().'device/index');
 	}
 
 	// create new device
