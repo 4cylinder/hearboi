@@ -4,8 +4,6 @@ class Device extends CI_Controller {
 	function __construct() {
 		// Call the Controller constructor
     	parent::__construct();
-    	$this->load->model('Device_model');
-    	$this->load->model('User_model');
     }
 	/**
 	 * Index Page for this controller.
@@ -28,6 +26,7 @@ class Device extends CI_Controller {
 
 	// load view for edit device page
 	public function editDevice() {
+		$this->load->model('Device_model');
 		$data['title'] = "EDIT DEVICE";
 		$this->load->view('deviceForm',$data);
 	}
@@ -62,11 +61,12 @@ class Device extends CI_Controller {
 
 	// load view for profile edit page
 	public function user() {
+		$this->load->model('User_model');
 		$this->load->view('profile');
 	}
 
 	// save user details (grab data from AJAX)
 	public function saveUser() {
-
+		$this->load->model('User_model');
 	}
 }
