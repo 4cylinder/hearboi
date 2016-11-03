@@ -62,7 +62,8 @@ class Device extends CI_Controller {
 	// load view for profile edit page
 	public function user() {
 		$this->load->model('User_model');
-		$this->load->view('profile');
+		$data['user'] = $this->User_model->get(1);
+		$this->load->view('profile', $data);
 	}
 
 	// save user details (grab data from AJAX)

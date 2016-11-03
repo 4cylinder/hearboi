@@ -94,7 +94,14 @@
 </body>
 <script>
 $(function(){
+    // enable bootstrap switch
     $("#notification").bootstrapSwitch();
+
+    // listener for SAVE link to validate form fields and send AJAX request to back end
+    $('#saveLink').click(function(e){
+        console.log("save link clicked");
+        
+    });
 });
 </script>
 </html>

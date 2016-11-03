@@ -46,31 +46,26 @@
 		<div class="col-md-9">
 			<div class="row">
 				<div class="col-md-3"><label class="control-label">NAME</label></div>
-				<div class="col-md-3"><input class="form-control input-sm" placeholder="FIRST NAME" type="text" name="fName" id="fName"></div>
-				<div class="col-md-3"><input class="form-control input-sm" placeholder="LAST NAME" type="text" name="lName" id="lName"></div>
+				<div class="col-md-3"><input class="form-control input-sm" value="<?=$user->fname; ?>" type="text" name="fName" id="fName" required></div>
+				<div class="col-md-3"><input class="form-control input-sm" value="<?=$user->lname; ?>" type="text" name="lName" id="lName" required></div>
 			</div>
 			<div class="row">
 				<div class="col-md-3"><label class="control-label">EMAIL</label></div>
-				<div class="col-md-6"><input class="form-control input-sm" placeholder="EXAMPLE@DOMAIN.COM" type="text" name="email" id="email"></div>
+				<div class="col-md-6"><input class="form-control input-sm" value="<?=$user->email; ?>" type="text" name="email" id="email" required></div>
 			</div>
 			<div class="row">
 				<div class="col-md-3"><label class="control-label">PHONE</label></div>
-				<div class="col-md-6"><input class="form-control input-sm" placeholder="123-456-7890" type="text" name="phone" id="phone"></div>
+				<div class="col-md-6"><input class="form-control input-sm" value="<?=$user->phone; ?>" type="text" name="phone" id="phone" required></div>
 			</div>
 		</div>		
 	</div>
 </form>
 <script>
 $(function(){
-	// listener for BACK link to pop up
-	$('#backLink').click(function(e){
-		e.preventDefault();
-		console.log("back link clicked");
-	});
 	// listener for SAVE link to validate form fields and send AJAX request to back end
 	$('#saveLink').click(function(e){
-		e.preventDefault();
 		console.log("save link clicked");
+
 	});
 })
 </script>
