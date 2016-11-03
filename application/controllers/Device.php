@@ -61,7 +61,6 @@ class Device extends CI_Controller {
 		if (empty($_FILES['audioFile']['name'])) {
 			$device['audioFile'] = "default.mp3";
 		} else {
-			$this->upload->do_upload('audioFile');
 			$filename = $_FILES['audioFile']['name'];
 			$array = explode('.', $filename);
 			$extension = end($array);
@@ -72,7 +71,6 @@ class Device extends CI_Controller {
 		if (empty($_FILES['photo']['name'])) {
 			$device['photo'] = "default.jpg";
 		} else {
-			$this->upload->do_upload('photo');
 			$filename = $_FILES['photo']['name'];
 			$array = explode('.', $filename);
 			$extension = end($array);
@@ -103,11 +101,7 @@ class Device extends CI_Controller {
 		if (empty($_FILES['audioFile']['name'])) {
 			$curr = $this->device_model->get($device['id']);
 			$device['audioFile'] = $curr->audioFile;
-			echo "debug";
-			$this->load->view('main');
-			return;
 		} else {
-			$this->upload->do_upload('audioFile');
 			$filename = $_FILES['audioFile']['name'];
 			$array = explode('.', $filename);
 			$extension = end($array);
@@ -119,7 +113,6 @@ class Device extends CI_Controller {
 			$curr = $this->device_model->get($device['id']);
 			$device['photo'] = $curr->photo;
 		} else {
-			$this->upload->do_upload('photo');
 			$filename = $_FILES['photo']['name'];
 			$array = explode('.', $filename);
 			$extension = end($array);
