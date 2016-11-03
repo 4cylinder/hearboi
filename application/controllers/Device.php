@@ -72,7 +72,7 @@ class Device extends CI_Controller {
 		}
 		
 		$this->device_model->update($device);
-
+		redirect(base_url().'device/index');
 	}
 
 	// save device details (grab data from AJAX)
