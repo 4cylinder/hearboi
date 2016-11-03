@@ -56,11 +56,21 @@
         <div class="col-md-9">
             <div class="row">
                 <div class="col-md-3"><label class="control-label">NAME</label></div>
-                <div class="col-md-6"><input class="form-control input-sm" placeholder="NAME" type="text" name="device_name" id="device_name"></div>
+                <div class="col-md-6">
+                <?php if ($title=="NEW DEVICE") {?>
+                    <input class="form-control input-sm" placeholder="NAME" type="text" name="device_name" id="device_name">
+                <?php } else if ($title=="EDIT DEVICE") {?>
+                    <input class="form-control input-sm" value="<?=$device->device_name;?>" type="text" name="device_name" id="device_name">
+                <?php } ?>                   
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-3"><label class="control-label">LOCATION</label></div>
-                <div class="col-md-6"><input class="form-control input-sm" placeholder="LOCATION" type="text" name="location" id="location"></div>
+                <?php if ($title=="NEW DEVICE") {?>
+                    <input class="form-control input-sm" placeholder="LOCATION" type="text" name="location" id="location">
+                <?php } else if ($title=="EDIT DEVICE") {?>
+                    <input class="form-control input-sm" value="<?=$device->location;?>" type="text" name="location" id="location">
+                <?php } ?>
             </div>
         </div>     
     </div>
@@ -88,7 +98,7 @@
             <div class="row">
                 <div class="col-md-2"><label class="control-label">NOTIFICATION</label></div>
                 <div class="col-md-4">
-                    <input type="checkbox" name="allow_notif" id="allow_notif">
+                    <input type="checkbox" name="allow_notif" id="allow_notif" checked>
                 </div>
             </div>
         </div>   
@@ -98,7 +108,7 @@
                 <div class="col-md-4"><input type="file" name ="audioFile"></div>
             <?php } else if ($title=="EDIT DEVICE") {?>
                 <audio controls>
-                <source src="<?=base_url();?>audio/default.mp3" type="audio/mp3">
+                <source src="<?=base_url();?>audio/<?=$device->audioFile;?>" type="audio/mp3">
             </audio> 
             <?php } ?>
             

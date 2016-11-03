@@ -27,9 +27,10 @@ class Device extends CI_Controller {
 	}
 
 	// load view for edit device page
-	public function editDevice() {
-		$this->load->model('Device_model');
+	public function editDevice($id) {
+		$this->load->model('device_model');
 		$data['title'] = "EDIT DEVICE";
+		$data['device'] = $this->device_model->get($id);
 		$this->load->view('deviceForm',$data);
 	}
 
@@ -107,10 +108,15 @@ class Device extends CI_Controller {
 		// Number to text
 		$this->load->model('user_model');
 		$user = $this->user_model->get(1);
-		$phones = array($user->phone);
 
-		$results = $api->send($text, $phones, true);
-		echo json_encode($results);
+		if ($user->allow_notif=="on") {
+			$phones = array($user->phone);
+			$results = $api->send($text, $phones, true);
+			echo json_encode($results);
+		} else {
+			echo "Sorry, notifications are not enabled.";
+		}
+		
 	}
 
 	// load view for profile edit page

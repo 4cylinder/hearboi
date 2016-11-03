@@ -36,13 +36,16 @@
 </nav>
 
 <div class="container">
-	<!-- PHP code to insert here later to loop through session data and display current devices-->
 	<div class="row text-center">
-	<?php
-	foreach ($devices as $device) {
-		echo $device->device_name . "<br/>";
-	}
-	?>
+	<?php foreach ($devices as $device) { ?>
+		<div class="col-md-3">
+			<a href="<?=base_url().'edit/'.$device->id;?>">
+				<img src="<?=base_url().'images/devices/'.$device->photo; ?>" alt="your image" height="100">
+				<br/>
+				<h6><?=$device->name; ?></h6>
+			</a>
+		</div>
+	<?php } ?>
 	</div>
 	<div class="row text-center">
 		<a href="<?=base_url();?>device/newDevice" class="btn btn-primary" role="button">Add Device</a>
