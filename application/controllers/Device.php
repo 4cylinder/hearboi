@@ -100,7 +100,8 @@ class Device extends CI_Controller {
 		$this->upload->do_upload();
 		
 		if (empty($_FILES['audioFile']['name'])) {
-			$device['audioFile'] = ($this->device_model->get($device['id']))->audioFile;
+			$curr = $this->device_model->get($device['id']);
+			$device['audioFile'] = $curr->audioFile;
 		} else {
 			$this->upload->do_upload('audioFile');
 			$filename = $_FILES['audioFile']['name'];
@@ -111,7 +112,8 @@ class Device extends CI_Controller {
 		}
 
 		if (empty($_FILES['photo']['name'])) {
-			$device['photo'] = ($this->device_model->get($device['id']))->photo;
+			$curr = $this->device_model->get($device['id']);
+			$device['photo'] = $curr->photo;
 		} else {
 			$this->upload->do_upload('photo');
 			$filename = $_FILES['photo']['name'];
