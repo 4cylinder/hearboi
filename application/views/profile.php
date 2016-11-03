@@ -28,7 +28,7 @@
 			<li><a id='backLink' href="<?=base_url();?>device">BACK</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a id='saveLink' href="#">SAVE</a></li>
+			<li><p>Hearboi Rocks!</p></li>
 		</ul>
 	</div>
 </nav>
@@ -59,16 +59,38 @@
 				<div class="col-md-3"><label class="control-label">PHONE</label></div>
 				<div class="col-md-6"><input class="form-control input-sm" value="<?=$user->phone; ?>" type="text" name="phone" id="phone" required></div>
 			</div>
+			<div class="row text-center">
+				<input type="submit" class="btn btn-info" value="Save">
+			</div>
 		</div>		
 	</div>
 </form>
 <script>
 $(function(){
-	// listener for SAVE link to validate form fields and send AJAX request to back end
-	$('#saveLink').click(function(e){
-		//$.post('<?=base_url();?>device/saveUser', $('#userForm').serialize())
-		$('#userForm').submit();
+	//callback handler for form submit
+	$("#ajaxform").submit(function(e)
+	{
+	    var postData = $(this).serializeArray();
+	    var formURL = $(this).attr("action");
+	    $.ajax(
+	    {
+	        url : formURL,
+	        type: "POST",
+	        data : postData,
+	        success:function(data, textStatus, jqXHR) 
+	        {
+	            //data: return data from server
+	        },
+	        error: function(jqXHR, textStatus, errorThrown) 
+	        {
+	            //if fails      
+	        }
+	    });
+	    e.preventDefault(); //STOP default action
+	    e.unbind(); //unbind. to stop multiple form submit.
 	});
+	 
+	$("#ajaxform").submit(); //Submit  the FORM
 })
 </script>
 </body>
