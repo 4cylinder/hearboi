@@ -68,6 +68,6 @@ class Device extends CI_Controller {
 
 	// save user details (grab data from AJAX)
 	public function saveUser() {
-		$this->load->model('User_model');
+		$this->load->model('user_model');
 	}
 }

@@ -7,13 +7,13 @@ class Device_model extends CI_Model {
 	// get all devices
 	function getAll() {
 		$query = $this->db->get('devices');
-		return $query->result('Device');
+		return $query->result('device');
 	}
 
 	// get single device
 	function get ($id) {
 		$query = $this->db->get_where('devices',array('id' => $id));
-		return $query->row(0,'Device');
+		return $query->row(0,'device');
 	}
 
 	// delete one device
