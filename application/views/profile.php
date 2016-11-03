@@ -48,8 +48,8 @@
 		<div class="col-md-9">
 			<div class="row">
 				<div class="col-md-3"><label class="control-label">NAME</label></div>
-				<div class="col-md-3"><input class="form-control input-sm" value="<?=$user->fname; ?>" type="text" name="fName" id="fName" required></div>
-				<div class="col-md-3"><input class="form-control input-sm" value="<?=$user->lname; ?>" type="text" name="lName" id="lName" required></div>
+				<div class="col-md-3"><input class="form-control input-sm" value="<?=$user->fname; ?>" type="text" name="fName" id="fname" required></div>
+				<div class="col-md-3"><input class="form-control input-sm" value="<?=$user->lname; ?>" type="text" name="lName" id="lname" required></div>
 			</div>
 			<div class="row">
 				<div class="col-md-3"><label class="control-label">EMAIL</label></div>
