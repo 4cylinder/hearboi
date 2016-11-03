@@ -36,7 +36,7 @@
 <form id="userForm">
 	<div class="container text-center">
 		<div class="col-md-3">
-			<img src="<?=base_url().'images/'.$user->photo; ?>" class="avatar img-circle" alt="avatar">
+			<img src="<?=base_url().'images/users/'.$user->photo; ?>" class="avatar img-circle" alt="avatar">
 			<h6>Change Profile Photo</h6>
 			<label for="upload">
 				<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
