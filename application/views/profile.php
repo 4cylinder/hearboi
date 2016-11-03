@@ -33,7 +33,7 @@
 	</div>
 </nav>
 
-<form id="userForm">
+<form id="userForm" action='<?=base_url();?>device/saveUser' method='post'>
 	<div class="container text-center">
 		<div class="col-md-3">
 			<img src="<?=base_url().'images/users/'.$user->photo; ?>" class="avatar img-circle" alt="avatar">
@@ -66,7 +66,8 @@
 $(function(){
 	// listener for SAVE link to validate form fields and send AJAX request to back end
 	$('#saveLink').click(function(e){
-		$.post('<?=base_url();?>device/saveUser', $('#userForm').serialize())
+		//$.post('<?=base_url();?>device/saveUser', $('#userForm').serialize())
+		$('#userForm').submit();
 	});
 })
 </script>
