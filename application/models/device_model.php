@@ -6,12 +6,14 @@ class Device_model extends CI_Model {
     }
 	// get all devices
 	function getAll() {
-
+		$query = $this->db->get('devices');
+		return $query->result('Device');
 	}
 
 	// get single device
 	function get ($id) {
-
+		$query = $this->db->get_where('devices',array('id' => $id));
+		return $query->row(0,'Device');
 	}
 
 	// delete one device

@@ -4,8 +4,8 @@ class Device extends CI_Controller {
 	function __construct() {
 		// Call the Controller constructor
     	parent::__construct();
-    	$this->load->model('device_model');
-    	$this->load->model('user_model');
+    	$this->load->model('Device_model');
+    	$this->load->model('User_model');
     }
 	/**
 	 * Index Page for this controller.
