@@ -55,8 +55,7 @@ class Device extends CI_Controller {
 		// uploaded files
 		$config['upload_path'] = './uploads/';
 		$this->load->library('upload', $config);
-		$this->upload->do_upload('audioFile');
-		$this->upload->do_upload('photo');
+		$this->upload->do_upload();
 
 		if (empty($_FILES['audioFile']['name'])) {
 			$device['audioFile'] = "default.mp3";
@@ -95,8 +94,7 @@ class Device extends CI_Controller {
 		// uploaded files
 		$config['upload_path'] = './uploads/';
 		$this->load->library('upload', $config);
-		$this->upload->do_upload('audioFile');
-		$this->upload->do_upload('photo');
+		$this->upload->do_upload();
 		
 		if (empty($_FILES['audioFile']['name'])) {
 			$curr = $this->device_model->get($device['id']);
@@ -105,7 +103,7 @@ class Device extends CI_Controller {
 			$filename = $_FILES['audioFile']['name'];
 			$array = explode('.', $filename);
 			$extension = end($array);
-			$device['audioFile'] = $id.".".$extension;
+			$device['audioFile'] = $device['id'].".".$extension;
 			rename("./uploads/".$filename, "./audio/".$device['audioFile']);
 		}
 
@@ -116,7 +114,7 @@ class Device extends CI_Controller {
 			$filename = $_FILES['photo']['name'];
 			$array = explode('.', $filename);
 			$extension = end($array);
-			$device['photo'] = $id.".".$extension;
+			$device['photo'] = $device['id'].".".$extension;
 			rename("./uploads/".$filename, "./images/devices/".$device['photo']);
 		}
 
