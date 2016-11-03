@@ -72,6 +72,7 @@
                     </select>
                 </div>
             </div>
+            <br/>
             <div class="row">
                 <div class="col-md-2"><label class="control-label">NOTIFICATION</label></div>
                 <div class="col-md-4">
