@@ -53,15 +53,20 @@ class Device extends CI_Controller {
 		$device['id'] = $id;
 
 		// uploaded files
-		$config['upload_path'] = './images/devices/';
-		$config['allowed_types'] = 'gif|jpg|png';
+		$config['upload_path'] = './uploads/';
+		$this->load->library('upload', $config);
+		$this->upload->do_upload();
+		
 
 		if (empty($_FILES['audioFile']['name'])) {
 			$device['audioFile'] = "default.mp3";
 		} else {
 			$this->upload->do_upload('audioFile');
 			$filename = $_FILES['audioFile']['name'];
-			$device['audioFile'] = $filename;
+			$array = explode('.', $filename);
+			$extension = end($array);
+			$device['audioFile'] = $id.".".$extension;
+			rename("./uploads/".$filename, "./audio/".$device['audioFile']);
 		}
 
 		if (empty($_FILES['photo']['name'])) {
@@ -69,7 +74,10 @@ class Device extends CI_Controller {
 		} else {
 			$this->upload->do_upload('photo');
 			$filename = $_FILES['photo']['name'];
-			$device['photo'] = $filename;
+			$array = explode('.', $filename);
+			$extension = end($array);
+			$device['photo'] = $id.".".$extension;
+			rename("./uploads/".$filename, "./images/devices/".$device['photo']);
 		}
 		
 		$this->device_model->update($device);
@@ -78,18 +86,41 @@ class Device extends CI_Controller {
 
 	// save device details (grab data from AJAX)
 	public function saveDevice(){
-		//$config['upload_path'] = './images/devices/';
-		//$config['file_name'] = "1.jpg";
+		$this->load->model('device_model');
 		$device = Array();
 		$device['id'] = $this->input->post('deviceId');
-		$device['name'] = $this->input->post('deviceName');
+		$device['device_name'] = $this->input->post('device_name');
 		$device['location'] = $this->input->post('location');
-		$device['type'] = $this->input->post('deviceType');
-		$device['notification'] = $this->input->post('notification');
-		$device['audioFile'] = $this->input->post('audioFile');
-		$device['photo'] = $this->input->post('photo');
+		$device['device_type'] = $this->input->post('device_type');
+		$device['allow_notif'] = $this->input->post('allow_notif');
+		
+		// uploaded files
+		$config['upload_path'] = './uploads/';
+		$this->load->library('upload', $config);
+		$this->upload->do_upload();
+		
+		if (empty($_FILES['audioFile']['name'])) {
+			$device['audioFile'] = ($this->device_model->get($device['id']))->audioFile;
+		} else {
+			$this->upload->do_upload('audioFile');
+			$filename = $_FILES['audioFile']['name'];
+			$array = explode('.', $filename);
+			$extension = end($array);
+			$device['audioFile'] = $id.".".$extension;
+			rename("./uploads/".$filename, "./audio/".$device['audioFile']);
+		}
 
-		$this->load->model('device_model');
+		if (empty($_FILES['photo']['name'])) {
+			$device['photo'] = ($this->device_model->get($device['id']))->photo;
+		} else {
+			$this->upload->do_upload('photo');
+			$filename = $_FILES['photo']['name'];
+			$array = explode('.', $filename);
+			$extension = end($array);
+			$device['photo'] = $id.".".$extension;
+			rename("./uploads/".$filename, "./images/devices/".$device['photo']);
+		}
+
 		$this->device_model->update($device);
 
 		redirect(base_url().'device/index');

@@ -26,7 +26,7 @@
 	</div>
 	<div class="navbar-collapse collapse">
 		<ul class="nav navbar-nav navbar-left">
-			<li><a href="<?=base_url();?>">EDIT</a></li>
+			<li><a href="#">TBD</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
