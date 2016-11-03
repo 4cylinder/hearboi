@@ -54,6 +54,7 @@ class Device extends CI_Controller {
 
 		// uploaded files
 		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png|mp3|wav|ogg|midi';
 		$this->load->library('upload', $config);
 		$this->upload->do_upload('audioFile');
 		$this->upload->do_upload('photo');
@@ -94,6 +95,7 @@ class Device extends CI_Controller {
 		
 		// uploaded files
 		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png|mp3|wav|ogg|midi';
 		$this->load->library('upload', $config);
 		$this->upload->do_upload('audioFile');
 		$this->upload->do_upload('photo');
