@@ -121,7 +121,7 @@
                 <input type="submit" class="btn btn-info" value="Create Device">
             <?php } else if ($title=="EDIT DEVICE") {?>
                 <input type="submit" class="btn btn-info" value="Save Changes">
-                <a href="<?=base_url();."device/delete/".$device->id; ?>" class="btn btn-danger" role="button">Delete Device</a>
+                <a href="<?=base_url().'device/delete/'.$device->id; ?>" class="btn btn-danger" role="button">Delete Device</a>
             <?php } ?>
         </div>
     </div>
