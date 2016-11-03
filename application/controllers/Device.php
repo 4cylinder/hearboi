@@ -127,6 +127,13 @@ class Device extends CI_Controller {
 		redirect(base_url().'device/index');
 	}
 
+	// delete device
+	public function delete($id) {
+		$this->load->model('device_model');
+		$this->device_model->delete($id);
+		redirect(base_url().'device/index');
+	}
+
 	// Call SMS Gateway to send alert text
 	public function sendSMS(){
 		$this->load->library('sms/TextMagicAPI');
