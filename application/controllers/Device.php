@@ -56,7 +56,7 @@ class Device extends CI_Controller {
 		$config['upload_path'] = './images/devices/';
 		$config['allowed_types'] = 'gif|jpg|png';
 
-		if (empty($_FILES['audioFile']['name']) {
+		if (empty($_FILES['audioFile']['name'])) {
 			$device['audioFile'] = "default.mp3";
 		} else {
 			$this->upload->do_upload('audioFile');
@@ -64,7 +64,7 @@ class Device extends CI_Controller {
 			$device['audioFile'] = $filename;
 		}
 
-		if (empty($_FILES['photo']['name']) {
+		if (empty($_FILES['photo']['name'])) {
 			$device['photo'] = "default.jpg";
 		} else {
 			$this->upload->do_upload('photo');
