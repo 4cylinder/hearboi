@@ -78,6 +78,8 @@ class Device extends CI_Controller {
 		$user['phone'] = $this->input->post('phone');
 		$this->load->model('user_model');
 		$this->user_model->update($user);
-		$this->user();
+		$response['status'] = true;
+        $response['message'] = 'success';
+        echo json_encode($response);
 	}
 }

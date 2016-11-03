@@ -59,8 +59,9 @@
 				<div class="col-md-3"><label class="control-label">PHONE</label></div>
 				<div class="col-md-6"><input class="form-control input-sm" value="<?=$user->phone; ?>" type="text" name="phone" id="phone" required></div>
 			</div>
+			<br/>
 			<div class="row text-center">
-				<input type="submit" class="btn btn-info" value="Save">
+				<input type="submit" class="btn btn-info" value="Save Changes">
 			</div>
 		</div>		
 	</div>
@@ -79,18 +80,16 @@ $(function(){
 	        data : postData,
 	        success:function(data, textStatus, jqXHR) 
 	        {
-	            //data: return data from server
+	            alert("Changes saved successfully");
 	        },
 	        error: function(jqXHR, textStatus, errorThrown) 
 	        {
-	            //if fails      
+	            alert("Error saving changes");     
 	        }
 	    });
 	    e.preventDefault(); //STOP default action
 	    e.unbind(); //unbind. to stop multiple form submit.
 	});
-	 
-	$("#userForm").submit(); //Submit  the FORM
 })
 </script>
 </body>
