@@ -70,6 +70,7 @@ class Device extends CI_Controller {
 	public function saveUser() {
 		//$config['upload_path'] = './images/users/';
 		//$config['file_name'] = "1.jpg";
+		$user = Array();
 		$user['id'] = 1;
 		$user['fname'] = $this->input->post('fname');
 		$user['lname'] = $this->input->post('lname');
