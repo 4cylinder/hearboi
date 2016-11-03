@@ -35,9 +35,11 @@
 </nav>
 
 <form id="deviceForm">
+    <?php if ($title=="EDIT DEVICE") {?>
+        <input type="hidden" id="deviceId" name="deviceId" value="<?=$device->id;?>">
+    <?php } ?>
     <div class="container text-center">
         <div class="col-md-3">
-            <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
             <h6>Device Photo</h6>
             <input type='file' id="photo" name='photo' />
             <br/>
@@ -50,7 +52,7 @@
         <div class="col-md-9">
             <div class="row">
                 <div class="col-md-3"><label class="control-label">NAME</label></div>
-                <div class="col-md-6"><input class="form-control input-sm" placeholder="NAME" type="text" name="deviceName" id="deviceName"></div>
+                <div class="col-md-6"><input class="form-control input-sm" placeholder="NAME" type="text" name="device_name" id="device_name"></div>
             </div>
             <div class="row">
                 <div class="col-md-3"><label class="control-label">LOCATION</label></div>
@@ -64,7 +66,7 @@
             <div class="row">
                 <div class="col-md-2"><label class="control-label">TYPE</label></div>
                 <div class="col-md-4">
-                    <select class="form-control" id="deviceType" name="deviceType">
+                    <select class="form-control" id="device_type" name="device_type">
                         <option value="DEFAULT">DEFAULT</option>
                     </select>
                 </div>
@@ -82,7 +84,7 @@
             <div class="row">
                 <div class="col-md-2"><label class="control-label">NOTIFICATION</label></div>
                 <div class="col-md-4">
-                    <input type="checkbox" name="notification" id="notification">
+                    <input type="checkbox" name="allow_notif" id="allow_notif">
                 </div>
             </div>
         </div>   
@@ -90,6 +92,13 @@
             <audio controls>
                 <source src="<?=base_url();?>audio/default.mp3" type="audio/mp3">
             </audio> 
+        </div>
+        <div class="row text-center">
+            <?php if ($title=="NEW DEVICE") {?>
+                <input type="submit" class="btn btn-info" value="Create Device">
+            <?php } else if ($title=="EDIT DEVICE") {?>
+                <input type="submit" class="btn btn-info" value="Save Changes">
+            <?php } ?>
         </div>
     </div>
 </form>
@@ -100,11 +109,6 @@ $(function(){
     // enable bootstrap switch
     $("#notification").bootstrapSwitch();
 
-    // listener for SAVE link to validate form fields and send AJAX request to back end
-    $('#saveLink').click(function(e){
-        console.log("save link clicked");
-        
-    });
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();

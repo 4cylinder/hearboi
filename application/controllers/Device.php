@@ -21,7 +21,9 @@ class Device extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index() {
-		$this->load->view('home');
+		$this->load->model('device_model');
+		$data['devices'] = $this->device_model->getAll();
+		$this->load->view('home', $data);
 	}
 
 	// load view for edit device page
@@ -35,6 +37,43 @@ class Device extends CI_Controller {
 	public function newDevice() {
 		$data['title'] = "NEW DEVICE";
 		$this->load->view('deviceForm', $data);
+		redirect(base_url().'device/index');
+	}
+
+	// create new device
+	public function createDevice(){
+		// normal form elements
+		$device['device_name'] = $this->input->post('device_name');
+		$device['location'] = $this->input->post('location');
+		$device['device_type'] = $this->input->post('device_type');
+		$device['allow_notif'] = $this->input->post('allow_notif');
+		
+		$this->load->model('device_model');
+		$id = $this->device_model->insert($device);
+		$device['id'] = $id;
+
+		// uploaded files
+		$config['upload_path'] = './images/devices/';
+		$config['allowed_types'] = 'gif|jpg|png';
+
+		if (empty($_FILES['audioFile']['name']) {
+			$device['audioFile'] = "default.mp3";
+		} else {
+			$this->upload->do_upload('audioFile');
+			$filename = $_FILES['audioFile']['name'];
+			$device['audioFile'] = $filename;
+		}
+
+		if (empty($_FILES['photo']['name']) {
+			$device['photo'] = "default.jpg";
+		} else {
+			$this->upload->do_upload('photo');
+			$filename = $_FILES['photo']['name'];
+			$device['photo'] = $filename;
+		}
+		
+		$this->device_model->update($device);
+
 	}
 
 	// save device details (grab data from AJAX)
@@ -46,10 +85,18 @@ class Device extends CI_Controller {
 		$device['name'] = $this->input->post('deviceName');
 		$device['location'] = $this->input->post('location');
 		$device['type'] = $this->input->post('deviceType');
+		$device['notification'] = $this->input->post('notification');
+		$device['audioFile'] = $this->input->post('audioFile');
+		$device['photo'] = $this->input->post('photo');
+
+		$this->load->model('device_model');
+		$this->device_model->update($device);
+
+		redirect(base_url().'device/index');
 	}
 
 	// Call SMS Gateway to send alert text
-	public function doorbell(){
+	public function sendSMS(){
 		$this->load->library('sms/TextMagicAPI');
 		$api = new TextMagicAPI(array(
 		    "username" => "tsyew", 
@@ -58,8 +105,10 @@ class Device extends CI_Controller {
 
 		$text = "Interactive Device Design SMS Gateway Test";
 
-		// Use this number for testing purposes. This is absolutely free.
-		$phones = array(13105337308);
+		// Number to text
+		$this->load->model('user_model');
+		$user = $this->user_model->get(1);
+		$phones = array($user->phone);
 
 		$results = $api->send($text, $phones, true);
 		echo json_encode($results);

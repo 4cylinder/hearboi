@@ -38,6 +38,13 @@
 <div class="container">
 	<!-- PHP code to insert here later to loop through session data and display current devices-->
 	<div class="row text-center">
+	<?php
+	foreach ($devices as $device) {
+		echo $device->device_name . "<br/>";
+	}
+	?>
+	</div>
+	<div class="row text-center">
 		<a href="<?=base_url();?>device/newDevice" class="btn btn-primary" role="button">Add Device</a>
 	</div>
 </div>

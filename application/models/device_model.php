@@ -27,10 +27,9 @@ class Device_model extends CI_Model {
 	public function insert ($device) {
 		$this->db->insert("devices", 
 			array('location' => $device['location'],
-				'device_name' => $device['name'],
-				'device_type' => $device['type'],
-				'allow_notif' => $device['notification'],
-				'audioFile' => $device['audioFile']));
+				'device_name' => $device['device_name'],
+				'device_type' => $device['device_type'],
+				'allow_notif' => $device['allow_notif']));
 		return $this->db->insert_id();
 	}
 
@@ -39,9 +38,8 @@ class Device_model extends CI_Model {
 		$this->db->where('id', $device['id']);
 		return $this->db->update("devices", 
 			array('location' => $device['location'],
-				'device_name' => $device['name'],
-				'device_type' => $device['type'],
-				'allow_notif' => $device['notification'],
-				'audioFile' => $device['audioFile']));
+				'device_name' => $device['device_name'],
+				'device_type' => $device['device_type'],
+				'allow_notif' => $device['allow_notif']));
 	}
 }

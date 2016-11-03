@@ -33,7 +33,7 @@
 	</div>
 </nav>
 
-<form id="userForm" action='<?=base_url();?>device/saveUser' method='post'>
+<form enctype="multipart/form-data" id="userForm" action='<?=base_url();?>device/saveUser' method='post'>
 	<div class="container text-center">
 		<div class="col-md-3">
 			<h6>Profile Photo</h6>
