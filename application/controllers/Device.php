@@ -103,6 +103,8 @@ class Device extends CI_Controller {
 		if (empty($_FILES['audioFile']['name'])) {
 			$curr = $this->device_model->get($device['id']);
 			$device['audioFile'] = $curr->audioFile;
+			echo "debug";
+			$this->load->view('main');
 		} else {
 			$this->upload->do_upload('audioFile');
 			$filename = $_FILES['audioFile']['name'];

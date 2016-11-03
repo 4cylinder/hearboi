@@ -105,15 +105,16 @@
             </div>
         </div>   
         <div class="col-md-6">
-            <?php if ($title=="NEW DEVICE") {?>
-                <div class="col-md-2"><label class="control-label">AUDIO FILE</label></div>
-                <div class="col-md-4"><input type="file" name ="audioFile"></div>
-            <?php } else if ($title=="EDIT DEVICE") {?>
-                <audio controls>
-                <source src="<?=base_url();?>audio/<?=$device->audioFile;?>" type="audio/mp3">
-            </audio> 
-            <?php } ?>
-            
+            <div class="col-md-2"><label class="control-label">AUDIO FILE</label></div>
+            <div class="col-md-4">
+                <input type="file" id="audioFile" name="audioFile">
+                <?php if ($title=="EDIT DEVICE") {?>
+                    <br/>
+                    <audio controls>
+                        <source src="<?=base_url();?>audio/<?=$device->audioFile;?>" type="audio/mp3">
+                    </audio> 
+                <?php } ?>
+            </div>           
         </div>
         <div class="row text-center">
             <?php if ($title=="NEW DEVICE") {?>
