@@ -38,11 +38,14 @@
     <div class="container text-center">
         <div class="col-md-3">
             <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
-            <h6>Change Device Photo</h6>
-            <label for="upload">
-                <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
-                <input type="file" id="newPhoto" name="newPhoto" style="display:none">
-            </label>
+            <h6>Device Photo</h6>
+            <input type='file' id="photo" name='photo' />
+            <br/>
+            <?php if ($title=="NEW DEVICE") {?>
+                <img id="preview" src="//placehold.it/100" alt="your image" height="100" />
+            <?php } else if ($title=="EDIT DEVICE") {?>
+                <img id="preview" src="<?=base_url().'images/devices/'.$device->photo;?>" alt="your image" height="100" />
+            <?php } ?>
         </div>
         <div class="col-md-9">
             <div class="row">
@@ -101,6 +104,21 @@ $(function(){
     $('#saveLink').click(function(e){
         console.log("save link clicked");
         
+    });
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#preview').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $("#photo").change(function(){
+        readURL(this);
     });
 });
 </script>

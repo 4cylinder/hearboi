@@ -20,16 +20,28 @@ class Device_model extends CI_Model {
 
 	// delete one device
 	public function delete ($id) {
-
+		return $this->db->delete("devices",array('id' => $id ));
 	}
 
 	// insert new device
-	public function insert ($newDevice) {
-
+	public function insert ($device) {
+		$this->db->insert("devices", 
+			array('location' => $device['location'],
+				'device_name' => $device['name'],
+				'device_type' => $device['type'],
+				'allow_notif' => $device['notification'],
+				'audioFile' => $device['audioFile']));
+		return $this->db->insert_id();
 	}
 
 	// update existing device
-	public function update ($deviceDetails) {
-		
+	public function update ($device) {
+		$this->db->where('id', $device['id']);
+		return $this->db->update("devices", 
+			array('location' => $device['location'],
+				'device_name' => $device['name'],
+				'device_type' => $device['type'],
+				'allow_notif' => $device['notification'],
+				'audioFile' => $device['audioFile']));
 	}
 }

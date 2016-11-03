@@ -39,7 +39,13 @@ class Device extends CI_Controller {
 
 	// save device details (grab data from AJAX)
 	public function saveDevice(){
-
+		//$config['upload_path'] = './images/devices/';
+		//$config['file_name'] = "1.jpg";
+		$device = Array();
+		$device['id'] = $this->input->post('deviceId');
+		$device['name'] = $this->input->post('deviceName');
+		$device['location'] = $this->input->post('location');
+		$device['type'] = $this->input->post('deviceType');
 	}
 
 	// Call SMS Gateway to send alert text

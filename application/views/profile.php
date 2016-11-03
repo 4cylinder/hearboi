@@ -36,14 +36,9 @@
 <form id="userForm" action='<?=base_url();?>device/saveUser' method='post'>
 	<div class="container text-center">
 		<div class="col-md-3">
-			<img src="<?=base_url().'images/users/'.$user->photo; ?>" class="avatar img-circle" alt="avatar">
-			<!--
-			<h6>Change Profile Photo</h6>
-			<label for="upload">
-				<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
-				<input type="file" id="photo" name="photo" style="display:none">
-			</label>
-			-->
+			<h6>Profile Photo</h6>
+			<input type='file' id="photo" name='photo' />
+			<img id="preview" src="<?=base_url().'images/users/'.$user->photo; ?>" alt="your image" height="100" />
 		</div>
 		<div class="col-md-9">
 			<div class="row">
@@ -69,8 +64,7 @@
 <script>
 $(function(){
 	//callback handler for form submit
-	$("#userForm").submit(function(e)
-	{
+	$("#userForm").submit(function(e){
 	    var postData = $(this).serializeArray();
 	    var formURL = $(this).attr("action");
 	    $.ajax(
@@ -90,6 +84,24 @@ $(function(){
 	    e.preventDefault(); //STOP default action
 	    e.unbind(); //unbind. to stop multiple form submit.
 	});
+
+
+	// photo upload previewer
+	function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#preview').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $("#photo").change(function(){
+        readURL(this);
+    });
 })
 </script>
 </body>
