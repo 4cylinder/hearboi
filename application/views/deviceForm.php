@@ -89,9 +89,14 @@
             </div>
         </div>   
         <div class="col-md-6">
-            <audio controls>
+            <?php if ($title=="NEW DEVICE") {?>
+                <input type="file" name ="audioFile">
+            <?php } else if ($title=="EDIT DEVICE") {?>
+                <audio controls>
                 <source src="<?=base_url();?>audio/default.mp3" type="audio/mp3">
             </audio> 
+            <?php } ?>
+            
         </div>
         <div class="row text-center">
             <?php if ($title=="NEW DEVICE") {?>
@@ -107,7 +112,7 @@
 <script>
 $(function(){
     // enable bootstrap switch
-    $("#notification").bootstrapSwitch();
+    $("#allow_notif").bootstrapSwitch();
 
     function readURL(input) {
         if (input.files && input.files[0]) {
