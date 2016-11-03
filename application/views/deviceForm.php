@@ -34,9 +34,9 @@
     </div>
 </nav>
 <?php if ($title=="NEW DEVICE") {?>
-    <form id="deviceForm" method="post" action="<?=base_url();?>device/createDevice">
+    <form enctype="multipart/form-data" id="deviceForm" method="post" action="<?=base_url();?>device/createDevice">
 <?php } else if ($title=="EDIT DEVICE") {?>
-    <form id="deviceForm" method="post" action="<?=base_url();?>device/saveDevice">
+    <form enctype="multipart/form-data" id="deviceForm" method="post" action="<?=base_url();?>device/saveDevice">
 <?php } ?>
 
     <?php if ($title=="EDIT DEVICE") {?>
