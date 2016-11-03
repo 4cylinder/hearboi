@@ -20,6 +20,6 @@ class User_model extends CI_Model {
 				'lname' => $user->lname, 
 				'email' => $user->email, 
 				'phone' => $user->phone,
-				'photo' => $user->photo);
+				'photo' => $user->photo));
 	}
 }
