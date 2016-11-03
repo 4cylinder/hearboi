@@ -14,12 +14,12 @@ class User_model extends CI_Model {
 
 	// update single user
 	public function update($user) {
-		$this->db->where('id', $user->id);
+		$this->db->where('id', $user['id']);
 		return $this->db->update("users", 
-			array('fname' => $user->fname,
-				'lname' => $user->lname, 
-				'email' => $user->email, 
-				'phone' => $user->phone,
+			array('fname' => $user['fname'],
+				'lname' => $user['lname'], 
+				'email' => $user['email'], 
+				'phone' => $user['phone'],
 				/*'photo' => $user->photo*/));
 	}
 }
