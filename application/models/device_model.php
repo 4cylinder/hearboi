@@ -4,30 +4,31 @@ class Device_model extends CI_Model {
 	public function __construct() {
         parent::__construct();
     }
+
 	// get all devices
-	function getAll() {
+	public function getAll() {
 		$query = $this->db->get('devices');
 		return $query->result('device');
 	}
 
 	// get single device
-	function get ($id) {
+	public function get ($id) {
 		$query = $this->db->get_where('devices',array('id' => $id));
 		return $query->row(0,'device');
 	}
 
 	// delete one device
-	function delete ($id) {
+	public function delete ($id) {
 
 	}
 
 	// insert new device
-	function insert ($newDevice) {
+	public function insert ($newDevice) {
 
 	}
 
 	// update existing device
-	function update ($deviceDetails) {
+	public function update ($deviceDetails) {
 		
 	}
 }
