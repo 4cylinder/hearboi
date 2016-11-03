@@ -52,7 +52,9 @@
                 <div class="col-md-3"><label class="control-label">LOCATION</label></div>
                 <div class="col-md-6"><input class="form-control input-sm" placeholder="LOCATION" type="text" name="location" id="location"></div>
             </div>
-        </div>
+        </div>     
+    </div>
+    <div class="container text-center">
         <div class="col-md-6">
             <div class="row">
                 <div class="col-md-2"><label class="control-label">TYPE</label></div>
@@ -79,7 +81,7 @@
                     <input type="checkbox" name="notification" id="notification">
                 </div>
             </div>
-        </div>        
+        </div>   
     </div>
 </form>
 
