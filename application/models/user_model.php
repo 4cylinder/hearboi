@@ -9,7 +9,7 @@ class User_model extends CI_Model {
 	// get single user
 	public function get($id) {
 		$query = $this->db->get_where('users', array('id' => $id));
-		return $query->row(0,'user');
+		return $query->row(0,'User_model');
 	}
 
 	// update single user
