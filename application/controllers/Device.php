@@ -26,14 +26,16 @@ class Device extends CI_Controller {
 		$this->load->view('home');
 	}
 
-	// load view for new device page
-	public function edit() {
-		$this->load->view('editDevice');
+	// load view for edit device page
+	public function editDevice() {
+		$data['title'] = "EDIT DEVICE";
+		$this->load->view('deviceForm',$data);
 	}
 
-	// load view for edit device page
+	// load view for new device page
 	public function newDevice() {
-		$this->load->view('newDevice');
+		$data['title'] = "NEW DEVICE";
+		$this->load->view('deviceForm', $data);
 	}
 
 	// save device details (grab data from AJAX)

@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => '',
-	'password' => '',
-	'database' => '',
+	'hostname' => 'cal-patent-lab.chhaitskv8dz.us-west-2.rds.amazonaws.com',
+	'username' => 'teamrocket',
+	'password' => 'teamrocket',
+	'database' => 'cs294',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
