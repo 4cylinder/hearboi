@@ -33,8 +33,12 @@
         </ul>
     </div>
 </nav>
+<?php if ($title=="NEW DEVICE") {?>
+    <form id="deviceForm" method="post" action="<?=base_url();?>device/createDevice">
+<?php } else if ($title=="EDIT DEVICE") {?>
+    <form id="deviceForm" method="post" action="<?=base_url();?>device/saveDevice">
+<?php } ?>
 
-<form id="deviceForm">
     <?php if ($title=="EDIT DEVICE") {?>
         <input type="hidden" id="deviceId" name="deviceId" value="<?=$device->id;?>">
     <?php } ?>
@@ -90,7 +94,8 @@
         </div>   
         <div class="col-md-6">
             <?php if ($title=="NEW DEVICE") {?>
-                <input type="file" name ="audioFile">
+                <div class="col-md-2"><label class="control-label">AUDIO FILE</label></div>
+                <div class="col-md-4"><input type="file" name ="audioFile"></div>
             <?php } else if ($title=="EDIT DEVICE") {?>
                 <audio controls>
                 <source src="<?=base_url();?>audio/default.mp3" type="audio/mp3">
