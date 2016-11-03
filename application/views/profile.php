@@ -68,7 +68,7 @@
 <script>
 $(function(){
 	//callback handler for form submit
-	$("#ajaxform").submit(function(e)
+	$("#userForm").submit(function(e)
 	{
 	    var postData = $(this).serializeArray();
 	    var formURL = $(this).attr("action");
@@ -90,7 +90,7 @@ $(function(){
 	    e.unbind(); //unbind. to stop multiple form submit.
 	});
 	 
-	$("#ajaxform").submit(); //Submit  the FORM
+	$("#userForm").submit(); //Submit  the FORM
 })
 </script>
 </body>
