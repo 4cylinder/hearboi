@@ -1,4 +1,5 @@
 <html>
+<title><?php echo $title;?></title>
 <head>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -54,6 +55,7 @@
             </div>
         </div>     
     </div>
+    <br/>
     <div class="container text-center">
         <div class="col-md-6">
             <div class="row">
@@ -74,7 +76,6 @@
                     </select>
                 </div>
             </div>
-            <br/>
             <div class="row">
                 <div class="col-md-2"><label class="control-label">NOTIFICATION</label></div>
                 <div class="col-md-4">
@@ -82,6 +83,11 @@
                 </div>
             </div>
         </div>   
+        <div class="col-md-6">
+            <audio controls>
+                <source src="<?=base_url();?>audio/default.mp3" type="audio/mp3">
+            </audio> 
+        </div>
     </div>
 </form>
 
