@@ -40,6 +40,8 @@ class Device_model extends CI_Model {
 			array('location' => $device['location'],
 				'device_name' => $device['device_name'],
 				'device_type' => $device['device_type'],
-				'allow_notif' => $device['allow_notif']));
+				'allow_notif' => $device['allow_notif'],
+				'photo' => $device['photo'],
+				'audioFile' => $device['audioFile']));
 	}
 }
