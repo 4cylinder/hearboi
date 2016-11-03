@@ -55,7 +55,8 @@ class Device extends CI_Controller {
 		// uploaded files
 		$config['upload_path'] = './uploads/';
 		$this->load->library('upload', $config);
-		$this->upload->do_upload();
+		$this->upload->do_upload('audioFile');
+		$this->upload->do_upload('photo');
 
 		if (empty($_FILES['audioFile']['name'])) {
 			$device['audioFile'] = "default.mp3";
@@ -94,7 +95,8 @@ class Device extends CI_Controller {
 		// uploaded files
 		$config['upload_path'] = './uploads/';
 		$this->load->library('upload', $config);
-		$this->upload->do_upload();
+		$this->upload->do_upload('audioFile');
+		$this->upload->do_upload('photo');
 		
 		if (empty($_FILES['audioFile']['name'])) {
 			$curr = $this->device_model->get($device['id']);
