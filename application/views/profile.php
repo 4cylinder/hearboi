@@ -37,11 +37,13 @@
 	<div class="container text-center">
 		<div class="col-md-3">
 			<img src="<?=base_url().'images/users/'.$user->photo; ?>" class="avatar img-circle" alt="avatar">
+			<!--
 			<h6>Change Profile Photo</h6>
 			<label for="upload">
 				<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
-				<input type="file" id="newPhoto" name="newPhoto" style="display:none">
+				<input type="file" id="photo" name="photo" style="display:none">
 			</label>
+			-->
 		</div>
 		<div class="col-md-9">
 			<div class="row">
@@ -64,8 +66,7 @@
 $(function(){
 	// listener for SAVE link to validate form fields and send AJAX request to back end
 	$('#saveLink').click(function(e){
-		console.log("save link clicked");
-
+		$.post('<?=base_url();?>device/saveUser', $('#userForm').serialize())
 	});
 })
 </script>

@@ -68,6 +68,14 @@ class Device extends CI_Controller {
 
 	// save user details (grab data from AJAX)
 	public function saveUser() {
+		//$config['upload_path'] = './images/users/';
+		//$config['file_name'] = "1.jpg";
+		$user['id'] = 1;
+		$user['fname'] = $this->input->post('fname');
+		$user['lname'] = $this->input->post('lname');
+		$user['email'] = $this->input->post('email');
+		$user['phone'] = $this->input->post('phone');
 		$this->load->model('user_model');
+		$this->user_model->update($user);
 	}
 }
