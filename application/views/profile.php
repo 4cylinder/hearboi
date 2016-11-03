@@ -28,7 +28,7 @@
 			<li><a id='backLink' href="<?=base_url();?>device">BACK</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li><p>Hearboi Rocks!</p></li>
+			<li><a href='#'>TBD</a></li>
 		</ul>
 	</div>
 </nav>
