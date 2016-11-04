@@ -46,7 +46,6 @@
         </nav>
         <div class="row">
             <h6>Device Photo</h6>
-            <br/>
             <label for='photo'>
             <?php if ($title=="NEW DEVICE") {?>
                 <img id="preview" src="//placehold.it/100" alt="your image" height="100" style="cursor:pointer;"/>
