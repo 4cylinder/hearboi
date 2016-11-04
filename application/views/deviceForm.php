@@ -73,39 +73,34 @@
                 <input class="form-control input-sm" value="<?=$device->location;?>" type="text" name="location" id="location" required>
             <?php } ?>
             </div>
-        </div>  
-    </div>
-    <br/>
-    <div class="container text-center">
-        <div class="col-md-6">
-            <div class="row">
-                <div class="col-md-2"><label class="control-label">TYPE</label></div>
-                <div class="col-md-4">
-                    <select class="form-control" id="device_type" name="device_type">
-                        <option value="DEFAULT">DEFAULT</option>
-                    </select>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"><label class="control-label">TYPE</label></div>
+            <div class="col-md-8">
+                <select class="form-control" id="device_type" name="device_type">
+                    <option value="DEFAULT">DEFAULT</option>
+                </select>
             </div>
-            <div class="row">
-                <div class="col-md-2"><label class="control-label">TIMING</label></div>
-                <div class="col-md-4">
-                    <select class="form-control" id="timing" name="timing">
-                        <option value="30">30</option>
-                        <option value="60">60</option>
-                        <option value="90">90</option>
-                    </select>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"><label class="control-label">TIMING</label></div>
+            <div class="col-md-8">
+                <select class="form-control" id="timing" name="timing">
+                    <option value="30">30</option>
+                    <option value="60">60</option>
+                    <option value="90">90</option>
+                </select>
             </div>
-            <div class="row">
-                <div class="col-md-2"><label class="control-label">NOTIFICATION</label></div>
-                <div class="col-md-4">
-                    <input type="checkbox" name="allow_notif" id="allow_notif" checked>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"><label class="control-label">NOTIFICATION</label></div>
+            <div class="col-md-8">
+                <input type="checkbox" name="allow_notif" id="allow_notif" checked>
             </div>
-        </div>   
-        <div class="col-md-6">
-            <div class="col-md-2"><label class="control-label">AUDIO FILE</label></div>
-            <div class="col-md-4">
+        </div>
+        <div class="row">
+            <div class="col-md-4"><label class="control-label">AUDIO FILE</label></div>
+            <div class="col-md-8">
                 <input type="file" id="audioFile" name="audioFile">
                 <?php if ($title=="EDIT DEVICE") {?>
                     <br/>
@@ -115,7 +110,7 @@
                 <?php } ?>
             </div>           
         </div>
-        <div class="row text-center">
+        <div class="row">
             <?php if ($title=="NEW DEVICE") {?>
                 <input type="submit" class="btn btn-info" value="Create Device">
             <?php } else if ($title=="EDIT DEVICE") {?>
