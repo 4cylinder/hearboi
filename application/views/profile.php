@@ -35,10 +35,12 @@
 			</div>
 		</nav>
 		<div class="col-md-3">
-			<h6>Profile Photo</h6>
-			<input type='file' id="photo" name='photo' />
-			<img id="preview" src="<?=base_url().'images/users/'.$user->photo; ?>" alt="your image" height="100" />
-		</div>
+            <h6>Profile Photo</h6>
+            <label for='photo'>
+	            <img id="preview" src="<?=base_url().'images/users/'.$user->photo; ?>" alt="your image" height="100" style="cursor:pointer;"/>
+            </label>
+            <input type='file' id="photo" name='photo' style="display:none;"/>
+        </div>
 		<div class="col-md-9">
 			<div class="row">
 				<div class="col-md-3"><label class="control-label">NAME</label></div>
