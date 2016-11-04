@@ -15,27 +15,29 @@
 <body>
 
 
-<nav class="navbar navbar-default" role="navigation">
-	<div class="navbar-header">
-		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>    
-		<span class="navbar-brand">MY HOME</span>
-	</div>
-	<div class="navbar-collapse collapse">
-		<ul class="nav navbar-nav navbar-left">
-			<li><a href="#">TBD</a></li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
-			<li><a href="<?=base_url();?>device/user"><span class="glyphicon glyphicon-user"></span></a></li>
-		</ul>
-	</div>
-</nav>
+
 
 <div class="container">
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>    
+			<span class="navbar-brand">MY HOME</span>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-left">
+				<li><a href="#">TBD</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+				<li><a href="<?=base_url();?>device/user"><span class="glyphicon glyphicon-user"></span></a></li>
+			</ul>
+		</div>
+	</nav>
+	
 	<div class="row text-center">
 	<?php foreach ($devices as $device) { ?>
 		<div class="col-md-3">

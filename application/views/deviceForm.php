@@ -15,24 +15,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default" role="navigation">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <span class="navbar-brand"><?php echo $title;?></span>
-    </div>
-    <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-left">
-            <li><a id='backLink' href="<?=base_url();?>device">BACK</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a id='saveLink' href="#">SAVE</a></li>
-        </ul>
-    </div>
-</nav>
+
 <?php if ($title=="NEW DEVICE") {?>
     <form enctype="multipart/form-data" id="deviceForm" method="post" action="<?=base_url();?>device/createDevice">
 <?php } else if ($title=="EDIT DEVICE") {?>
@@ -43,6 +26,24 @@
         <input type="hidden" id="deviceId" name="deviceId" value="<?=$device->id;?>">
     <?php } ?>
     <div class="container text-center">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <span class="navbar-brand"><?php echo $title;?></span>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a id='backLink' href="<?=base_url();?>device">BACK</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a id='saveLink' href="#">SAVE</a></li>
+                </ul>
+            </div>
+        </nav>
         <div class="col-md-3">
             <h6>Device Photo</h6>
             <input type='file' id="photo" name='photo' />

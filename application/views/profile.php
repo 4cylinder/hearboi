@@ -14,27 +14,26 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default" role="navigation">
-	<div class="navbar-header">
-		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>    
-		<span class="navbar-brand">PROFILE</span>
-	</div>
-	<div class="navbar-collapse collapse">
-		<ul class="nav navbar-nav navbar-left">
-			<li><a id='backLink' href="<?=base_url();?>device">BACK</a></li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href='#'>TBD</a></li>
-		</ul>
-	</div>
-</nav>
-
 <form enctype="multipart/form-data" id="userForm" action='<?=base_url();?>device/saveUser' method='post'>
 	<div class="container text-center">
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>    
+				<span class="navbar-brand">PROFILE</span>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-left">
+					<li><a id='backLink' href="<?=base_url();?>device">BACK</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href='#'>TBD</a></li>
+				</ul>
+			</div>
+		</nav>
 		<div class="col-md-3">
 			<h6>Profile Photo</h6>
 			<input type='file' id="photo" name='photo' />
