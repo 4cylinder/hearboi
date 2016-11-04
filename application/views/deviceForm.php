@@ -58,7 +58,7 @@
         </div>
         <div class="row">
             <div class="col-md-2"><label class="control-label">NAME</label></div>
-            <div class="col-md-4">
+            <div class="col-md-2">
             <?php if ($title=="NEW DEVICE") {?>
                 <input class="form-control input-sm" placeholder="NAME" type="text" name="device_name" id="device_name" required>
             <?php } else if ($title=="EDIT DEVICE") {?>
@@ -66,7 +66,7 @@
             <?php } ?>                   
             </div>
             <div class="col-md-2"><label class="control-label">LOCATION</label></div>
-            <div class="col-md-4">
+            <div class="col-md-2">
             <?php if ($title=="NEW DEVICE") {?>
                 <input class="form-control input-sm" placeholder="LOCATION" type="text" name="location" id="location" required>
             <?php } else if ($title=="EDIT DEVICE") {?>
@@ -74,8 +74,6 @@
             <?php } ?>
             </div>
             <br/>
-        </div>
-        <div class="row">
             <div class="col-md-2"><label class="control-label">TYPE</label></div>
             <div class="col-md-2">
                 <select class="form-control" id="device_type" name="device_type">
@@ -96,11 +94,11 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4"><label class="control-label">AUDIO FILE</label></div>
-            <div class="col-md-4">
+            <div class="col-md-2"><label class="control-label">AUDIO FILE</label></div>
+            <div class="col-md-2">
                 <input type="file" id="audioFile" name="audioFile">
             </div>
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <?php if ($title=="EDIT DEVICE") {?>
                     <br/>
                     <audio controls>
