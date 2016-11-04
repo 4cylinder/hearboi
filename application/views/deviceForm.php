@@ -46,27 +46,25 @@
         </nav>
         <div class="row">
             <h6>Device Photo</h6>
-            <input type='file' id="photo" name='photo' />
             <br/>
             <?php if ($title=="NEW DEVICE") {?>
-                <img id="preview" src="//placehold.it/100" alt="your image" height="100" />
+                <img id="preview" src="//placehold.it/100" alt="your image" height="100" style="cursor:pointer;"/>
             <?php } else if ($title=="EDIT DEVICE") {?>
-                <img id="preview" src="<?=base_url().'images/devices/'.$device->photo;?>" alt="your image" height="100" />
+                <img id="preview" src="<?=base_url().'images/devices/'.$device->photo;?>" alt="your image" height="100" style="cursor:pointer;"//>
             <?php } ?>
+            <input type='file' id="photo" name='photo' style="display:none;"/>
         </div>
         <div class="row">
-            <div class="col-md-4"><label class="control-label">NAME</label></div>
-            <div class="col-md-8">
+            <div class="col-md-2"><label class="control-label">NAME</label></div>
+            <div class="col-md-4">
             <?php if ($title=="NEW DEVICE") {?>
                 <input class="form-control input-sm" placeholder="NAME" type="text" name="device_name" id="device_name" required>
             <?php } else if ($title=="EDIT DEVICE") {?>
                 <input class="form-control input-sm" value="<?=$device->device_name;?>" type="text" name="device_name" id="device_name">
             <?php } ?>                   
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4"><label class="control-label">LOCATION</label></div>
-            <div class="col-md-8">
+            <div class="col-md-2"><label class="control-label">LOCATION</label></div>
+            <div class="col-md-4">
             <?php if ($title=="NEW DEVICE") {?>
                 <input class="form-control input-sm" placeholder="LOCATION" type="text" name="location" id="location" required>
             <?php } else if ($title=="EDIT DEVICE") {?>
@@ -75,26 +73,22 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4"><label class="control-label">TYPE</label></div>
-            <div class="col-md-8">
+            <div class="col-md-2"><label class="control-label">TYPE</label></div>
+            <div class="col-md-2">
                 <select class="form-control" id="device_type" name="device_type">
                     <option value="DEFAULT">DEFAULT</option>
                 </select>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4"><label class="control-label">TIMING</label></div>
-            <div class="col-md-8">
+            <div class="col-md-2"><label class="control-label">TIMING</label></div>
+            <div class="col-md-2">
                 <select class="form-control" id="timing" name="timing">
                     <option value="30">30</option>
                     <option value="60">60</option>
                     <option value="90">90</option>
                 </select>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4"><label class="control-label">NOTIFICATION</label></div>
-            <div class="col-md-8">
+            <div class="col-md-2"><label class="control-label">NOTIFICATION</label></div>
+            <div class="col-md-2">
                 <input type="checkbox" name="allow_notif" id="allow_notif" checked>
             </div>
         </div>
