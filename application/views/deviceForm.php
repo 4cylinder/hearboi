@@ -97,8 +97,10 @@
         </div>
         <div class="row">
             <div class="col-md-4"><label class="control-label">AUDIO FILE</label></div>
-            <div class="col-md-8">
+            <div class="col-md-4">
                 <input type="file" id="audioFile" name="audioFile">
+            </div>
+            <div class="col-md-4">
                 <?php if ($title=="EDIT DEVICE") {?>
                     <br/>
                     <audio controls>
