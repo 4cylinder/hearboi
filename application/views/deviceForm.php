@@ -47,11 +47,13 @@
         <div class="row">
             <h6>Device Photo</h6>
             <br/>
+            <label for='photo'>
             <?php if ($title=="NEW DEVICE") {?>
                 <img id="preview" src="//placehold.it/100" alt="your image" height="100" style="cursor:pointer;"/>
             <?php } else if ($title=="EDIT DEVICE") {?>
                 <img id="preview" src="<?=base_url().'images/devices/'.$device->photo;?>" alt="your image" height="100" style="cursor:pointer;"//>
             <?php } ?>
+            </label>
             <input type='file' id="photo" name='photo' style="display:none;"/>
         </div>
         <div class="row">
@@ -71,6 +73,7 @@
                 <input class="form-control input-sm" value="<?=$device->location;?>" type="text" name="location" id="location" required>
             <?php } ?>
             </div>
+            <br/>
         </div>
         <div class="row">
             <div class="col-md-2"><label class="control-label">TYPE</label></div>
