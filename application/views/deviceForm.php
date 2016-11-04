@@ -44,7 +44,7 @@
                 </ul>
             </div>
         </nav>
-        <div class="col-md-3">
+        <div class="row">
             <h6>Device Photo</h6>
             <input type='file' id="photo" name='photo' />
             <br/>
@@ -54,28 +54,26 @@
                 <img id="preview" src="<?=base_url().'images/devices/'.$device->photo;?>" alt="your image" height="100" />
             <?php } ?>
         </div>
-        <div class="col-md-9">
-            <div class="row">
-                <div class="col-md-3"><label class="control-label">NAME</label></div>
-                <div class="col-md-6">
-                <?php if ($title=="NEW DEVICE") {?>
-                    <input class="form-control input-sm" placeholder="NAME" type="text" name="device_name" id="device_name" required>
-                <?php } else if ($title=="EDIT DEVICE") {?>
-                    <input class="form-control input-sm" value="<?=$device->device_name;?>" type="text" name="device_name" id="device_name">
-                <?php } ?>                   
-                </div>
+        <div class="row">
+            <div class="col-md-4"><label class="control-label">NAME</label></div>
+            <div class="col-md-8">
+            <?php if ($title=="NEW DEVICE") {?>
+                <input class="form-control input-sm" placeholder="NAME" type="text" name="device_name" id="device_name" required>
+            <?php } else if ($title=="EDIT DEVICE") {?>
+                <input class="form-control input-sm" value="<?=$device->device_name;?>" type="text" name="device_name" id="device_name">
+            <?php } ?>                   
             </div>
-            <div class="row">
-                <div class="col-md-3"><label class="control-label">LOCATION</label></div>
-                <div class="col-md-6">
-                <?php if ($title=="NEW DEVICE") {?>
-                    <input class="form-control input-sm" placeholder="LOCATION" type="text" name="location" id="location" required>
-                <?php } else if ($title=="EDIT DEVICE") {?>
-                    <input class="form-control input-sm" value="<?=$device->location;?>" type="text" name="location" id="location" required>
-                <?php } ?>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"><label class="control-label">LOCATION</label></div>
+            <div class="col-md-8">
+            <?php if ($title=="NEW DEVICE") {?>
+                <input class="form-control input-sm" placeholder="LOCATION" type="text" name="location" id="location" required>
+            <?php } else if ($title=="EDIT DEVICE") {?>
+                <input class="form-control input-sm" value="<?=$device->location;?>" type="text" name="location" id="location" required>
+            <?php } ?>
             </div>
-        </div>     
+        </div>  
     </div>
     <br/>
     <div class="container text-center">
