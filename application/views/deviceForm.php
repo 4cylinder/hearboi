@@ -107,6 +107,9 @@
                 <a href="<?=base_url().'device/delete/'.$device->id; ?>" class="btn btn-danger" role="button">Delete Device</a>
             <?php } ?>
         </div>
+        <?php if ($title=="EDIT DEVICE") { ?>
+        <div class="row text-center" id="alertRow"></div>
+        <?php } ?>
     </div>
 </form>
 
@@ -116,6 +119,29 @@ $(function(){
     // enable bootstrap switch
     $("#allow_notif").bootstrapSwitch();
 
+    <?php if ($title=="EDIT DEVICE") { ?>
+    $("#deviceForm").submit(function(e){
+        var formURL = $(this).attr("action");
+        var formData = new FormData(this);
+        $.ajax(
+        {
+            url : formURL,
+            method: "POST",
+            data : formData,
+            processData: false,
+            contentType: false,
+
+            success:function(data, textStatus, jqXHR) {
+                $("#alertRow").html("<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Changes saved successfully.</strong></div>");
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                $("#alertRow").html("<div class='alert alert-warning'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Failed to save changes.</strong></div>");   
+            }
+        });
+        e.preventDefault(); //STOP default action
+    });
+    <?php } ?>
+    
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();

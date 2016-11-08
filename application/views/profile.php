@@ -59,8 +59,7 @@
 			<div class="row text-center">
 				<input type="submit" class="btn btn-info" value="Save Changes">
 			</div>
-			<div class="row text-center" id="alertRow">
-			</div>
+			<div class="row text-center" id="alertRow"></div>
 		</div>		
 	</div>
 </form>

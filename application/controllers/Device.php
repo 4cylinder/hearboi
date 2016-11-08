@@ -124,7 +124,9 @@ class Device extends CI_Controller {
 
 		$this->device_model->update($device);
 
-		redirect(base_url().'device/index');
+		$response['status'] = true;
+        $response['message'] = 'success';
+        echo json_encode($response);
 	}
 
 	// delete device
