@@ -59,6 +59,8 @@
 			<div class="row text-center">
 				<input type="submit" class="btn btn-info" value="Save Changes">
 			</div>
+			<div class="row text-center" id="alertRow">
+			</div>
 		</div>		
 	</div>
 </form>
@@ -76,13 +78,11 @@ $(function(){
 	        processData: false,
           	contentType: false,
 
-	        success:function(data, textStatus, jqXHR) 
-	        {
-	            alert("Changes saved successfully");
+	        success:function(data, textStatus, jqXHR) {
+	            $("#alertRow").html("<div class='alert alert-success><strong>Changes saved successfully.</strong></div>");
 	        },
-	        error: function(jqXHR, textStatus, errorThrown) 
-	        {
-	            alert("Error saving changes");     
+	        error: function(jqXHR, textStatus, errorThrown) {
+	            $("#alertRow").html("<div class='alert alert-warning><strong>Failed to save changes.</strong></div>");   
 	        }
 	    });
 	    e.preventDefault(); //STOP default action
