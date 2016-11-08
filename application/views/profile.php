@@ -71,8 +71,11 @@ $(function(){
 	    $.ajax(
 	    {
 	        url : formURL,
-	        type: "POST",
+	        method: "POST",
 	        data : formData,
+	        processData: false,
+          	contentType: false,
+
 	        success:function(data, textStatus, jqXHR) 
 	        {
 	            alert("Changes saved successfully");
@@ -83,9 +86,7 @@ $(function(){
 	        }
 	    });
 	    e.preventDefault(); //STOP default action
-	    e.unbind(); //unbind. to stop multiple form submit.
 	});
-
 
 	// photo upload previewer
 	function readURL(input) {
