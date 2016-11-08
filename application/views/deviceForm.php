@@ -80,14 +80,6 @@
                     <option value="DEFAULT">DEFAULT</option>
                 </select>
             </div>
-            <div class="col-md-2"><label class="control-label">TIMING</label></div>
-            <div class="col-md-2">
-                <select class="form-control" id="timing" name="timing">
-                    <option value="30">30</option>
-                    <option value="60">60</option>
-                    <option value="90">90</option>
-                </select>
-            </div>
             <div class="col-md-2"><label class="control-label">NOTIFICATION</label></div>
             <div class="col-md-2">
                 <input type="checkbox" name="allow_notif" id="allow_notif" checked>
