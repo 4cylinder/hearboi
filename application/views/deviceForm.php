@@ -13,6 +13,11 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script src="<?=base_url();?>js/bootstrap-switch.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .fa {
+        font-size: 2em;
+    }
+    </style>
 </head>
 <body>
 
@@ -86,9 +91,11 @@
             <div class="col-md-2">
                 <input type="checkbox" name="allow_notif" id="allow_notif" checked>
             </div>
-            <div class="col-md-2"><label class="control-label">AUDIO FILE</label></div>
+            <div class="col-md-2"><label class="control-label">AUDIO</label></div>
             <div class="col-md-2">
-                <input type="file" id="audioFile" name="audioFile">
+                <!--<input type="file" id="audioFile" name="audioFile">-->
+                <a href='#' id='startRecord'><i class="fa fa-microphone" aria-hidden="true"></i>Start Recording</a>
+                <a href='#' id='stopRecord'><i class="fa fa-stop" aria-hidden="true"></i>Stop Recording</a>
             </div>
             <div class="col-md-2">
                 <?php if ($title=="EDIT DEVICE") {?>
