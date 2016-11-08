@@ -164,7 +164,16 @@ class Device extends CI_Controller {
 			echo json_encode($results);
 		} else {
 			echo "Sorry, notifications are not enabled.";
-		}
+		}	
+	}
+
+	// start recording audio (remote control of device)
+	public function startRecording() {
+		
+	}
+
+	// stop recording audio (remote control of device)
+	public function stopRecording() {
 		
 	}
 

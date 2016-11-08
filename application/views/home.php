@@ -33,11 +33,11 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
-				<li><a href="<?=base_url();?>device/user"><span class="glyphicon glyphicon-user"></span></a></li>
+				<li><a href="<?=base_url();?>user/profile"><span class="glyphicon glyphicon-user"></span></a></li>
 			</ul>
 		</div>
 	</nav>
-	
+
 	<div class="row text-center">
 	<?php foreach ($devices as $device) { ?>
 		<div class="col-md-3">

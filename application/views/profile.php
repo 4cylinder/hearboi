@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<form enctype="multipart/form-data" id="userForm" action='<?=base_url();?>device/saveUser' method='post'>
+<form enctype="multipart/form-data" id="userForm" action='<?=base_url();?>user/save' method='post'>
 	<div class="container text-center">
 		<nav class="navbar navbar-default" role="navigation">
 			<div class="navbar-header">
