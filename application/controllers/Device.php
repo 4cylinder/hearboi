@@ -46,7 +46,11 @@ class Device extends CI_Controller {
 		$device['device_name'] = $this->input->post('device_name');
 		$device['location'] = $this->input->post('location');
 		$device['device_type'] = $this->input->post('device_type');
-		$device['allow_notif'] = $this->input->post('allow_notif');
+		if($this->input->post('allow_notif')){
+			$device['allow_notif'] = "on";
+		} else {
+			$device['allow_notif'] = "off";
+		}
 		
 		$this->load->model('device_model');
 		$id = $this->device_model->insert($device);
@@ -91,7 +95,11 @@ class Device extends CI_Controller {
 		$device['device_name'] = $this->input->post('device_name');
 		$device['location'] = $this->input->post('location');
 		$device['device_type'] = $this->input->post('device_type');
-		$device['allow_notif'] = $this->input->post('allow_notif');
+		if($this->input->post('allow_notif')){
+			$device['allow_notif'] = "on";
+		} else {
+			$device['allow_notif'] = "off";
+		}
 		
 		// uploaded files
 		$config['upload_path'] = './uploads/';

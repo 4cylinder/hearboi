@@ -90,7 +90,11 @@
         <div class="row">
             <div class="col-md-2"><label class="control-label">NOTIFICATION</label></div>
             <div class="col-md-2">
-                <input type="checkbox" name="allow_notif" id="allow_notif" checked>
+            <?php if ($title=="NEW DEVICE") {?>
+                <input type="checkbox" name="allow_notif" id="allow_notif" value="on" checked>
+            <?php } else if ($title=="EDIT DEVICE") {?>
+                <input type="checkbox" name="allow_notif" id="allow_notif" value="on" <?php if ($device->allow_notif=='on') echo "checked";?>>
+            <?php } ?>
             </div>
             <div class="col-md-2"><label class="control-label">AUDIO</label></div>
             <div class="col-md-2">
