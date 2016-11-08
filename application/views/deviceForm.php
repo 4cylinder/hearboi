@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
     .fa {
-        font-size: 2em;
+        font-size: 1.7em;
     }
     </style>
 </head>
@@ -95,8 +95,8 @@
             <div class="col-md-2"><label class="control-label">AUDIO</label></div>
             <div class="col-md-2">
                 <!--<input type="file" id="audioFile" name="audioFile">-->
-                <a href='#' id='startRecord'><i class="fa fa-microphone" aria-hidden="true"></i>Start Recording</a>
-                <a href='#' id='stopRecord'><i class="fa fa-stop" aria-hidden="true"></i>Stop Recording</a>
+                <a href='#' id='startRecord'>Start<i class="fa fa-microphone" aria-hidden="true"></i></a>
+                <a href='#' id='stopRecord'><i class="fa fa-stop" aria-hidden="true"></i>Stop</a>
             </div>
             <div class="col-md-2">
                 <?php if ($title=="EDIT DEVICE") {?>
