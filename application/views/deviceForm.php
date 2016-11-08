@@ -24,9 +24,9 @@
 
 
 <?php if ($title=="NEW DEVICE") {?>
-    <form enctype="multipart/form-data" id="deviceForm" method="post" action="<?=base_url();?>device/createDevice">
+    <form enctype="multipart/form-data" id="deviceForm" method="post" action="<?=base_url();?>device/create">
 <?php } else if ($title=="EDIT DEVICE") {?>
-    <form enctype="multipart/form-data" id="deviceForm" method="post" action="<?=base_url();?>device/saveDevice">
+    <form enctype="multipart/form-data" id="deviceForm" method="post" action="<?=base_url();?>device/save">
 <?php } ?>
 
     <?php if ($title=="EDIT DEVICE") {?>

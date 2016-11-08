@@ -27,7 +27,7 @@ class Device extends CI_Controller {
 	}
 
 	// load view for edit device page
-	public function editDevice($id) {
+	public function edit($id) {
 		$this->load->model('device_model');
 		$data['title'] = "EDIT DEVICE";
 		$data['device'] = $this->device_model->get($id);
@@ -41,7 +41,7 @@ class Device extends CI_Controller {
 	}
 
 	// create new device
-	public function createDevice(){
+	public function create(){
 		// normal form elements
 		$device['device_name'] = $this->input->post('device_name');
 		$device['location'] = $this->input->post('location');
@@ -88,7 +88,7 @@ class Device extends CI_Controller {
 	}
 
 	// save device details (grab data from AJAX)
-	public function saveDevice(){
+	public function save(){
 		$this->load->model('device_model');
 		$device = Array();
 		$device['id'] = $this->input->post('deviceId');
@@ -169,53 +169,18 @@ class Device extends CI_Controller {
 
 	// start recording audio (remote control of device)
 	public function startRecording() {
-		
+
 	}
 
 	// stop recording audio (remote control of device)
 	public function stopRecording() {
-		
+
 	}
 
-	// load view for profile edit page
-	public function user() {
-		$this->load->model('user_model');
-		$data['user'] = $this->user_model->get(1);
-		$this->load->view('profile', $data);
+	// APi for device to upload its recorded file to the server
+	public function uploadAudio(){
+
 	}
 
-	// save user details (grab data from AJAX)
-	public function saveUser() {
-		//$config['upload_path'] = './images/users/';
-		//$config['file_name'] = "1.jpg";
-		$this->load->model('user_model');
-
-		$user['id'] = 1;
-		$user['fname'] = $this->input->post('fname');
-		$user['lname'] = $this->input->post('lname');
-		$user['email'] = $this->input->post('email');
-		$user['phone'] = $this->input->post('phone');
-
-		// uploaded files
-		$config['upload_path'] = './uploads/';
-		$config['allowed_types'] = 'gif|jpg|png';
-		$this->load->library('upload', $config);
-		$this->upload->do_upload('photo');
-
-		if (empty($_FILES['photo']['name'])) {
-			$curr = $this->user_model->get(1);
-			$user['photo'] = $curr->photo;
-		} else {
-			$filename = $_FILES['photo']['name'];
-			$array = explode('.', $filename);
-			$extension = end($array);
-			$user['photo'] = "1".".".$extension;
-			rename("./uploads/".$filename, "./images/users/".$user['photo']);
-		}
-		
-		$this->user_model->update($user);
-		$response['status'] = true;
-        $response['message'] = 'success';
-        echo json_encode($response);
-	}
+	
 }

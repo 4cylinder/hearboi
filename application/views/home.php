@@ -41,7 +41,7 @@
 	<div class="row text-center">
 	<?php foreach ($devices as $device) { ?>
 		<div class="col-md-3">
-			<a href="<?=base_url().'device/editDevice/'.$device->id;?>">
+			<a href="<?=base_url().'device/edit/'.$device->id;?>">
 				<img src="<?=base_url().'images/devices/'.$device->photo; ?>" alt="your image" height="100">
 				<br/>
 				<h6><?=$device->device_name; ?></h6>
