@@ -193,7 +193,6 @@ class Device extends CI_Controller {
 			$user['photo'] = "1".".".$extension;
 			rename("./uploads/".$filename, "./images/users/".$user['photo']);
 		}
-
 		
 		$this->user_model->update($user);
 		$response['status'] = true;
