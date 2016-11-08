@@ -169,7 +169,8 @@ class Device extends CI_Controller {
 	public function saveUser() {
 		//$config['upload_path'] = './images/users/';
 		//$config['file_name'] = "1.jpg";
-		$user = Array();
+		$this->load->model('user_model');
+
 		$user['id'] = 1;
 		$user['fname'] = $this->input->post('fname');
 		$user['lname'] = $this->input->post('lname');
@@ -189,11 +190,11 @@ class Device extends CI_Controller {
 			$filename = $_FILES['photo']['name'];
 			$array = explode('.', $filename);
 			$extension = end($array);
-			$device['photo'] = $device['id'].".".$extension;
-			rename("./uploads/".$filename, "./images/devices/".$device['photo']);
+			$user['photo'] = "1".".".$extension;
+			rename("./uploads/".$filename, "./images/users/".$user['photo']);
 		}
 
-		$this->load->model('user_model');
+		
 		$this->user_model->update($user);
 		$response['status'] = true;
         $response['message'] = 'success';
