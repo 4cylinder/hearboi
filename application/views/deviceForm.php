@@ -80,19 +80,19 @@
                     <option value="DEFAULT">DEFAULT</option>
                 </select>
             </div>
+        </div>
+        <div class="row">
             <div class="col-md-2"><label class="control-label">NOTIFICATION</label></div>
             <div class="col-md-2">
                 <input type="checkbox" name="allow_notif" id="allow_notif" checked>
             </div>
-        </div>
-        <div class="row">
             <div class="col-md-2"><label class="control-label">AUDIO FILE</label></div>
             <div class="col-md-2">
                 <input type="file" id="audioFile" name="audioFile">
             </div>
             <div class="col-md-2">
                 <?php if ($title=="EDIT DEVICE") {?>
-                    <br/>
+                    <label>Current File:</label>
                     <audio controls>
                         <source src="<?=base_url();?>audio/<?=$device->audioFile;?>" type="audio/mp3">
                     </audio> 
