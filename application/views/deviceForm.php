@@ -41,7 +41,7 @@
                     <li><a id='backLink' href="<?=base_url();?>device">BACK</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a id='saveLink' href="#">SAVE</a></li>
+                    <li><a id='saveLink' href="#">TBD</a></li>
                 </ul>
             </div>
         </nav>

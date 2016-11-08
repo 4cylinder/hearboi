@@ -66,13 +66,12 @@
 $(function(){
 	//callback handler for form submit
 	$("#userForm").submit(function(e){
-	    var postData = $(this).serializeArray();
 	    var formURL = $(this).attr("action");
 	    $.ajax(
 	    {
 	        url : formURL,
 	        type: "POST",
-	        data : postData,
+	        data : new FormData(this),
 	        success:function(data, textStatus, jqXHR) 
 	        {
 	            alert("Changes saved successfully");

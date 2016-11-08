@@ -175,6 +175,24 @@ class Device extends CI_Controller {
 		$user['lname'] = $this->input->post('lname');
 		$user['email'] = $this->input->post('email');
 		$user['phone'] = $this->input->post('phone');
+
+		// uploaded files
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$this->load->library('upload', $config);
+		$this->upload->do_upload('photo');
+
+		if (empty($_FILES['photo']['name'])) {
+			$curr = $this->user_model->get(1);
+			$user['photo'] = $curr->photo;
+		} else {
+			$filename = $_FILES['photo']['name'];
+			$array = explode('.', $filename);
+			$extension = end($array);
+			$device['photo'] = $device['id'].".".$extension;
+			rename("./uploads/".$filename, "./images/devices/".$device['photo']);
+		}
+
 		$this->load->model('user_model');
 		$this->user_model->update($user);
 		$response['status'] = true;
