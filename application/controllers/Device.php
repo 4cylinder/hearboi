@@ -146,14 +146,6 @@ class Device extends CI_Controller {
 
 	// Call SMS Gateway to send alert text
 	public function sendSMS($deviceId){
-		$this->load->library('sms/TextMagicAPI');
-		$api = new TextMagicAPI(array(
-		    "username" => $this->config->item('sms_username'), 
-		    "password" => $this->config->item('sms_password')
-		));
-
-		$text = "Interactive Device Design SMS Gateway Test";
-
 		// Number to text
 		$this->load->model('user_model');
 		$this->load->model('device_model');
@@ -161,9 +153,15 @@ class Device extends CI_Controller {
 		$device = $this->device_model->get($deviceId);
 
 		if ($device->allow_notif=="on") {
-			$phones = array($user->phone);
-			$results = $api->send($text, $phones, true);
-			echo json_encode($results);
+			$phone = $user->phone;
+
+			$msg = urlencode("Interactive Device Design SMS Gateway Test");
+			$username = $this->config->item('sms_username');
+			$password = $this->config->item('sms_password');
+			$url = "https://www.textmagic.com/app/api?username=".$username."&password=".$password."&cmd=send&text=".$msg."&phone=".$phone."&unicode=1";
+
+			echo file_get_contents($url);
+
 		} else {
 			echo "Sorry, notifications are not enabled.";
 		}	
