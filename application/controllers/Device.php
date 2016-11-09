@@ -148,8 +148,8 @@ class Device extends CI_Controller {
 	public function sendSMS(){
 		$this->load->library('sms/TextMagicAPI');
 		$api = new TextMagicAPI(array(
-		    "username" => "tsyew", 
-		    "password" => "JsOg2Lf2eF"
+		    "username" => $this->config->item('sms_username'), 
+		    "password" => $this->config->item('sms_password')
 		));
 
 		$text = "Interactive Device Design SMS Gateway Test";

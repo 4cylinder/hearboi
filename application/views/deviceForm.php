@@ -131,6 +131,22 @@ $(function(){
     // enable bootstrap switch
     $("#allow_notif").bootstrapSwitch();
 
+    // ajax call for starting a recording remotely
+    $('#startRecord').click(function(e){
+        e.preventDefault();
+        $.get("<?=base_url();?>device/startRecording", function(data,status){
+
+        });
+    });
+
+    // ajax call for ending a recording remotely
+    $('#stopRecord').click(function(e){
+        e.preventDefault();
+        $.get("<?=base_url();?>device/stopRecording", function(data,status){
+
+        });
+    });
+
     // asynchronously submit form if it's in edit mode
     <?php if ($title=="EDIT DEVICE") { ?>
     $("#deviceForm").submit(function(e){
