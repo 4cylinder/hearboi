@@ -156,6 +156,7 @@ class Device extends CI_Controller {
 
 		// Number to text
 		$this->load->model('user_model');
+		$this->load->model('device_model');
 		$user = $this->user_model->get(1);
 		$device = $this->device_model->get($deviceId);
 
