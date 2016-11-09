@@ -145,7 +145,7 @@ class Device extends CI_Controller {
 	}
 
 	// Call SMS Gateway to send alert text
-	public function sendSMS(){
+	public function sendSMS($deviceId){
 		$this->load->library('sms/TextMagicAPI');
 		$api = new TextMagicAPI(array(
 		    "username" => $this->config->item('sms_username'), 
@@ -157,8 +157,9 @@ class Device extends CI_Controller {
 		// Number to text
 		$this->load->model('user_model');
 		$user = $this->user_model->get(1);
+		$device = $this->device_model->get($deviceId);
 
-		if ($user->allow_notif=="on") {
+		if ($device->allow_notif=="on") {
 			$phones = array($user->phone);
 			$results = $api->send($text, $phones, true);
 			echo json_encode($results);
