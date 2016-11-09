@@ -24,7 +24,7 @@
 
 
 <?php if ($title=="NEW DEVICE") {?>
-    <form enctype="multipart/form-data" id="deviceForm" method="post" action="<?=base_url();?>device/create">
+    <form enctype="multipart/form-data" id="deviceForm" method="post" action="<?=base_url();?>device/insert">
 <?php } else if ($title=="EDIT DEVICE") {?>
     <form enctype="multipart/form-data" id="deviceForm" method="post" action="<?=base_url();?>device/save">
 <?php } ?>
@@ -131,6 +131,7 @@ $(function(){
     // enable bootstrap switch
     $("#allow_notif").bootstrapSwitch();
 
+    // asynchronously submit form if it's in edit mode
     <?php if ($title=="EDIT DEVICE") { ?>
     $("#deviceForm").submit(function(e){
         var formURL = $(this).attr("action");

@@ -35,13 +35,13 @@ class Device extends CI_Controller {
 	}
 
 	// load view for new device page
-	public function newDevice() {
+	public function create() {
 		$data['title'] = "NEW DEVICE";
 		$this->load->view('deviceForm', $data);
 	}
 
 	// create new device
-	public function create(){
+	public function insert(){
 		// normal form elements
 		$device['device_name'] = $this->input->post('device_name');
 		$device['location'] = $this->input->post('location');

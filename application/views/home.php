@@ -50,7 +50,7 @@
 	<?php } ?>
 	</div>
 	<div class="row text-center">
-		<a href="<?=base_url();?>device/newDevice" class="btn btn-primary" role="button">Add Device</a>
+		<a href="<?=base_url();?>device/create" class="btn btn-primary" role="button">Add Device</a>
 	</div>
 </div>
 
