@@ -168,6 +168,8 @@ $(function(){
                     $("#alertRow").html(alertSuccess+"File can now be played back.</strong></div>");
                     $('#player').attr("src","<?=base_url(); ?>audio/output.wav");
                     $('#player').attr("type","audio/wav");
+                    $('#player').pause();
+                    $('#player').load();
                     $('#audioFile').val("output.wav");
                 }
             },
