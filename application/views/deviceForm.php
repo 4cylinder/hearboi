@@ -93,17 +93,18 @@
             </div>
             <div class="col-md-2"><label class="control-label">AUDIO</label></div>
             <div class="col-md-2">
-                <!--<input type="file" id="audioFile" name="audioFile">-->
                 <a href='#' class='btn btn-info' id='startRecord'>Start<i class="fa fa-microphone" aria-hidden="true"></i></a>
                 <a href='#' class='btn btn-info' id='stopRecord'><i class="fa fa-stop" aria-hidden="true"></i>Stop</a>
             </div>
             <div class="col-md-2">
-                <?php if ($title=="EDIT DEVICE") {?>
-                    <label>Current File:</label>
-                    <audio controls>
-                        <source src="<?=base_url();?>audio/<?=$device->audioFile;?>" type="audio/mp3">
-                    </audio> 
-                <?php } ?>
+                <label>Uploaded File:</label>
+                <audio controls>
+                    <?php if ($title=="NEW DEVICE") {?>
+                    <source src="<?=base_url(); ?>audio/default.mp3" type="audio/mp3">
+                    <?php } else if ($title=="EDIT DEVICE") {?>
+                    <source src="<?=base_url().'audio'.$device->audioFile; ?>" type="audio/mp3">
+                    <?php } ?>
+                </audio> 
             </div>           
         </div>
         <div class="row">

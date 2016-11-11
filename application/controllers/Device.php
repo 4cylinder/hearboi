@@ -200,7 +200,12 @@ class Device extends CI_Controller {
 
 	// API for device to upload its recorded file to the server
 	public function uploadAudio(){
-
+		// uploaded files
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'mp3|wav|ogg|midi';
+		$this->load->library('upload', $config);
+		$this->upload->do_upload();
+		
 	}
 
 }
