@@ -99,8 +99,8 @@
             <div class="col-md-2"><label class="control-label">AUDIO</label></div>
             <div class="col-md-2">
                 <!--<input type="file" id="audioFile" name="audioFile">-->
-                <a href='#' id='startRecord'>Start<i class="fa fa-microphone" aria-hidden="true"></i></a>
-                <a href='#' id='stopRecord'><i class="fa fa-stop" aria-hidden="true"></i>Stop</a>
+                <a href='#' class='btn btn-info' id='startRecord'>Start<i class="fa fa-microphone" aria-hidden="true"></i></a>
+                <a href='#' class='btn btn-info' id='stopRecord'><i class="fa fa-stop" aria-hidden="true"></i>Stop</a>
             </div>
             <div class="col-md-2">
                 <?php if ($title=="EDIT DEVICE") {?>
