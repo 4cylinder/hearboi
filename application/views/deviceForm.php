@@ -98,7 +98,7 @@
             </div>
             <div class="col-md-2">
                 <label>Audio File:</label>
-                <audio controls>
+                <audio id='audio' controls>
                     <?php if ($title=="NEW DEVICE") {?>
                     <source id='player' src="<?=base_url(); ?>audio/default.mp3" type="audio/mp3">
                     <input type='hidden' id='audioFile' name='audioFile' value='default.mp3'>
@@ -168,8 +168,9 @@ $(function(){
                     $("#alertRow").html(alertSuccess+"File can now be played back.</strong></div>");
                     $('#player').attr("src","<?=base_url(); ?>audio/output.wav");
                     $('#player').attr("type","audio/wav");
-                    $('#player').pause();
-                    $('#player').load();
+                    var audio = $('#audio');
+                    audio[0].pause();
+                    audio[0].load();
                     $('#audioFile').val("output.wav");
                 }
             },
