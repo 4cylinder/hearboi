@@ -169,17 +169,42 @@ class Device extends CI_Controller {
 
 	// start recording audio (remote control of device)
 	public function startRecording() {
-
+		$this->db->where('id',1);
+		if ($this->db->update("record", array('status'=>'START'))){
+			$response['status'] = true;
+	        $response['message'] = 'success';
+	        echo json_encode($response);
+		} else {
+			$response['status'] = false;
+	        $response['message'] = 'failure';
+	        echo json_encode($response);
+		}
 	}
 
 	// stop recording audio (remote control of device)
 	public function stopRecording() {
+		$this->db->where('id',1);
+		if ($this->db->update("record", array('status'=>'STOP'))){
+			$response['status'] = true;
+	        $response['message'] = 'success';
+	        echo json_encode($response);
+		} else {
+			$response['status'] = false;
+	        $response['message'] = 'failure';
+	        echo json_encode($response);
+		}
+	}
+
+	// API for device to upload its recorded file to the server
+	public function uploadAudio(){
 
 	}
 
-	// APi for device to upload its recorded file to the server
-	public function uploadAudio(){
-
+	// API for device to check the recording status
+	public function recordStatus(){
+		$query = $this->db->get_where('record',array('id' => 1));
+		$data = $query->result_array();
+		echo($data[0]['status']);
 	}
 
 	

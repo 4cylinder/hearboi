@@ -135,7 +135,11 @@ $(function(){
     $('#startRecord').click(function(e){
         e.preventDefault();
         $.get("<?=base_url();?>device/startRecording", function(data,status){
-
+            if (status=='success'){
+                $("#alertRow").html("<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Recording in progress.</strong></div>");
+            } else {
+                $("#alertRow").html("<div class='alert alert-warning'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Failed to start recording.</strong></div>");   
+            }
         });
     });
 
