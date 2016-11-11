@@ -129,7 +129,7 @@ $(function(){
     // ajax call for starting a recording remotely
     $('#startRecord').click(function(e){
         e.preventDefault();
-        $.get("<?=base_url();?>device/startRecording", function(data,status){
+        $.get("<?=base_url();?>device/record/start", function(data,status){
             if (status=='success'){
                 $("#alertRow").html("<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Recording in progress.</strong></div>");
             } else {
@@ -141,7 +141,7 @@ $(function(){
     // ajax call for ending a recording remotely
     $('#stopRecord').click(function(e){
         e.preventDefault();
-        $.get("<?=base_url();?>device/stopRecording", function(data,status){
+        $.get("<?=base_url();?>device/record/stop", function(data,status){
             if (status=='success'){
                 $("#alertRow").html("<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Recording stopped.</strong></div>");
             } else {
