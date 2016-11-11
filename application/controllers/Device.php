@@ -46,6 +46,8 @@ class Device extends CI_Controller {
 		$device['device_name'] = $this->input->post('device_name');
 		$device['location'] = $this->input->post('location');
 		$device['device_type'] = $this->input->post('device_type');
+		$device['audioFile'] = $this->input->post('audioFile');
+
 		if($this->input->post('allow_notif')){
 			$device['allow_notif'] = "on";
 		} else {
@@ -58,20 +60,9 @@ class Device extends CI_Controller {
 
 		// uploaded files
 		$config['upload_path'] = './uploads/';
-		$config['allowed_types'] = 'gif|jpg|png|mp3|wav|ogg|midi';
+		$config['allowed_types'] = 'gif|jpg|png|bmp';
 		$this->load->library('upload', $config);
-		$this->upload->do_upload('audioFile');
 		$this->upload->do_upload('photo');
-
-		if (empty($_FILES['audioFile']['name'])) {
-			$device['audioFile'] = "default.mp3";
-		} else {
-			$filename = $_FILES['audioFile']['name'];
-			$array = explode('.', $filename);
-			$extension = end($array);
-			$device['audioFile'] = $id.".".$extension;
-			rename("./uploads/".$filename, "./audio/".$device['audioFile']);
-		}
 
 		if (empty($_FILES['photo']['name'])) {
 			$device['photo'] = "default.jpg";
@@ -81,6 +72,12 @@ class Device extends CI_Controller {
 			$extension = end($array);
 			$device['photo'] = $id.".".$extension;
 			rename("./uploads/".$filename, "./images/devices/".$device['photo']);
+		}
+
+		// if a new recording was made
+		if ($device['audioFile']=="output.wav") {
+			$device['audioFile'] = $id.".wav";
+			rename("./audio/output.wav", "./audio/".$device['audioFile']);
 		}
 		
 		$this->device_model->update($device);
@@ -95,6 +92,8 @@ class Device extends CI_Controller {
 		$device['device_name'] = $this->input->post('device_name');
 		$device['location'] = $this->input->post('location');
 		$device['device_type'] = $this->input->post('device_type');
+		$device['audioFile'] = $this->input->post('audioFile');
+
 		if($this->input->post('allow_notif')){
 			$device['allow_notif'] = "on";
 		} else {
@@ -103,21 +102,10 @@ class Device extends CI_Controller {
 		
 		// uploaded files
 		$config['upload_path'] = './uploads/';
-		$config['allowed_types'] = 'gif|jpg|png|mp3|wav|ogg|midi';
+		$config['allowed_types'] = 'gif|jpg|png|bmp';
 		$this->load->library('upload', $config);
-		$this->upload->do_upload('audioFile');
 		$this->upload->do_upload('photo');
 		
-		if (empty($_FILES['audioFile']['name'])) {
-			$curr = $this->device_model->get($device['id']);
-			$device['audioFile'] = $curr->audioFile;
-		} else {
-			$filename = $_FILES['audioFile']['name'];
-			$array = explode('.', $filename);
-			$extension = end($array);
-			$device['audioFile'] = $device['id'].".".$extension;
-			rename("./uploads/".$filename, "./audio/".$device['audioFile']);
-		}
 
 		if (empty($_FILES['photo']['name'])) {
 			$curr = $this->device_model->get($device['id']);
@@ -128,6 +116,12 @@ class Device extends CI_Controller {
 			$extension = end($array);
 			$device['photo'] = $device['id'].".".$extension;
 			rename("./uploads/".$filename, "./images/devices/".$device['photo']);
+		}
+
+		// if a new recording was made
+		if ($device['audioFile']=="output.wav") {
+			$device['audioFile'] = $device['id'].".wav";
+			rename("./audio/output.wav", "./audio/".$device['audioFile']);
 		}
 
 		$this->device_model->update($device);
@@ -145,7 +139,7 @@ class Device extends CI_Controller {
 	}
 
 	// Call SMS Gateway to send alert text
-	public function sendSMS($deviceId){
+	public function sendSMS($deviceId) {
 		// Number to text
 		$this->load->model('user_model');
 		$this->load->model('device_model');
@@ -168,7 +162,7 @@ class Device extends CI_Controller {
 	}
 
 	// remote control of audio recording, and status display
-	public function record($cmd){
+	public function record($cmd) {
 		if ($cmd=="start") { // start recording audio
 			$this->db->where('id',1);
 			if ($this->db->update("record", array('status'=>'START'))){
@@ -195,17 +189,18 @@ class Device extends CI_Controller {
 			$query = $this->db->get_where('record',array('id' => 1));
 			$data = $query->result_array();
 			echo($data[0]['status']);
+		} else if ($cmd=="upload") {// device uploads its new recording to the server
+			// uploaded files
+			$config['upload_path'] = './audio/';
+			$config['allowed_types'] = 'mp3|wav|ogg|midi';
+			$this->load->library('upload', $config);
+			$this->upload->do_upload('audioFile');
+		} else if ($cmd=="download"){ // deviceForm view queries this to let user test recordings
+			if (file_exists("./audio/output.wav")) {
+				echo "output.wav";
+			} else {
+				echo "default.mp3";
+			}
 		}
 	}
-
-	// API for device to upload its recorded file to the server
-	public function uploadAudio(){
-		// uploaded files
-		$config['upload_path'] = './uploads/';
-		$config['allowed_types'] = 'mp3|wav|ogg|midi';
-		$this->load->library('upload', $config);
-		$this->upload->do_upload('audioFile');
-		
-	}
-
 }

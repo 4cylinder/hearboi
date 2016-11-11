@@ -97,14 +97,16 @@
                 <a href='#' class='btn btn-info' id='stopRecord'><i class="fa fa-stop" aria-hidden="true"></i>Stop</a>
             </div>
             <div class="col-md-2">
-                <label>Uploaded File:</label>
+                <label>Audio File:</label>
                 <audio controls>
                     <?php if ($title=="NEW DEVICE") {?>
-                    <source src="<?=base_url(); ?>audio/default.mp3" type="audio/mp3">
+                    <source id='player' src="<?=base_url(); ?>audio/default.mp3" type="audio/mp3">
+                    <input type='hidden' id='audioFile' name='audioFile' value='default.mp3'>
                     <?php } else if ($title=="EDIT DEVICE") {?>
-                    <source src="<?=base_url().'audio'.$device->audioFile; ?>" type="audio/mp3">
+                    <source id='player' src="<?=base_url().'audio/'.$device->audioFile; ?>" type="audio/mp3">
+                    <input type='hidden' id='audioFile' name='audioFile' value='<?=$device->audioFile; ?>'>
                     <?php } ?>
-                </audio> 
+                </audio>
             </div>           
         </div>
         <div class="row">
@@ -124,6 +126,10 @@
 </body>
 <script>
 $(function(){
+    // make code cleaner by sharing these vars
+    var alertSuccess = "<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>";
+    var alertWarning = "<div class='alert alert-warning'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>";
+
     // enable bootstrap switch
     $("#allow_notif").bootstrapSwitch();
 
@@ -132,24 +138,42 @@ $(function(){
         e.preventDefault();
         $.get("<?=base_url();?>device/record/start", function(data,status){
             if (status=='success'){
-                $("#alertRow").html("<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Recording in progress.</strong></div>");
+                $("#alertRow").html(alertSuccess+"Recording in progress.</strong></div>");
             } else {
-                $("#alertRow").html("<div class='alert alert-warning'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Failed to start recording.</strong></div>");   
+                $("#alertRow").html(alertWarning+"Failed to start recording.</strong></div>");   
             }
         });
     });
 
+    var interval = null;
     // ajax call for ending a recording remotely
     $('#stopRecord').click(function(e){
         e.preventDefault();
         $.get("<?=base_url();?>device/record/stop", function(data,status){
             if (status=='success'){
-                $("#alertRow").html("<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Recording stopped.</strong></div>");
+                $("#alertRow").html(alertSuccess+"Recording stopped. File is uploading. This may take a few seconds.</strong></div>");
+                interval = setInterval(listen,2000);
             } else {
-                $("#alertRow").html("<div class='alert alert-warning'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Failed to stop recording.</strong></div>");   
+                $("#alertRow").html(alertWarning+"Failed to stop recording.</strong></div>");   
             }
         });
     });
+
+    function listen(){
+        $.get({
+            url: "<?=base_url();?>device/record/download",
+            success: function(data){
+                if (data=="output.wav") {
+                    clearInterval(interval);
+                    $("#alertRow").html(alertSuccess+"File can now be played back.</strong></div>");
+                    $('#player').attr("src","<?=base_url(); ?>audio/output.wav");
+                }
+            },
+            error: function(){
+                clearInterval(interval);
+            }
+        });
+    }
 
     // asynchronously submit form if it's in edit mode
     <?php if ($title=="EDIT DEVICE") { ?>
@@ -165,10 +189,10 @@ $(function(){
             contentType: false,
 
             success:function(data, textStatus, jqXHR) {
-                $("#alertRow").html("<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Changes saved successfully.</strong></div>");
+                $("#alertRow").html(alertSuccess+"Changes saved successfully.</strong></div>");
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                $("#alertRow").html("<div class='alert alert-warning'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Failed to save changes.</strong></div>");   
+                $("#alertRow").html(alertWarning+"Failed to save changes.</strong></div>");   
             }
         });
         e.preventDefault(); //STOP default action
