@@ -147,7 +147,11 @@ $(function(){
     $('#stopRecord').click(function(e){
         e.preventDefault();
         $.get("<?=base_url();?>device/stopRecording", function(data,status){
-
+            if (status=='success'){
+                $("#alertRow").html("<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Recording stopped.</strong></div>");
+            } else {
+                $("#alertRow").html("<div class='alert alert-warning'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Failed to stop recording.</strong></div>");   
+            }
         });
     });
 
