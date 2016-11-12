@@ -16,7 +16,7 @@ status = 'STOP'
 
 def recordAudio(threadname):
 	global status
-	print threadname
+	print (threadname)
 	while True:
 		p = pyaudio.PyAudio()
 	
@@ -52,7 +52,7 @@ def recordAudio(threadname):
 
 def monitor(threadname):
 	global status
-	print threadname
+	print (threadname)
 	while True:
 		try:
 			status = urllib2.urlopen(website).read()
