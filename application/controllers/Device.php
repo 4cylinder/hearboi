@@ -168,6 +168,10 @@ class Device extends CI_Controller {
 			if ($this->db->update("record", array('status'=>'START'))){
 				$response['status'] = true;
 		        $response['message'] = 'success';
+		        // delete existing upload file so that a reupload can take place
+		        if (file_exists("./audio/output.wav")) {
+					unlink("./audio/output.wav");
+				}
 		        echo json_encode($response);
 			} else {
 				$response['status'] = false;
