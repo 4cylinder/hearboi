@@ -166,6 +166,7 @@ $(function(){
                 if (data=="output.wav") {
                     clearInterval(interval);
                     $("#alertRow").html(alertSuccess+"File can now be played back.</strong></div>");
+                    $('#player').attr("src","");
                     $('#player').attr("src","<?=base_url(); ?>audio/output.wav");
                     $('#player').attr("type","audio/wav");
                     var audio = $('#audio');
