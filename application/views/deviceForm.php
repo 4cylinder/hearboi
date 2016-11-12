@@ -117,9 +117,7 @@
                 <a href="<?=base_url().'device/delete/'.$device->id; ?>" class="btn btn-danger" role="button">Delete Device</a>
             <?php } ?>
         </div>
-        <?php if ($title=="EDIT DEVICE") { ?>
         <div class="row text-center" id="alertRow"></div>
-        <?php } ?>
     </div>
 </form>
 
