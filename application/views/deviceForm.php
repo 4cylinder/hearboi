@@ -52,7 +52,7 @@
             <?php if ($title=="NEW DEVICE") {?>
                 <img id="preview" src="//placehold.it/100" alt="your image" height="100" style="cursor:pointer;"/>
             <?php } else if ($title=="EDIT DEVICE") {?>
-                <img id="preview" src="<?=base_url().'images/devices/'.$device->photo;?>?<?=filemtime(base_url().'images/devices/'.$device->photo);?>" alt="your image" height="100" style="cursor:pointer;"//>
+                <img id="preview" src="<?=base_url().'images/devices/'.$device->photo;?>?<?=filemtime('./images/devices/'.$device->photo);?>" alt="your image" height="100" style="cursor:pointer;"//>
             <?php } ?>
             </label>
             <input type='file' id="photo" name='photo' style="display:none;"/>
@@ -103,7 +103,7 @@
                     <source id='player' src="<?=base_url(); ?>audio/default.mp3" type="audio/mp3">
                     <input type='hidden' id='audioFile' name='audioFile' value='default.mp3'>
                     <?php } else if ($title=="EDIT DEVICE") {?>
-                    <source id='player' src="<?=base_url().'audio/'.$device->audioFile; ?>?<?=filemtime(base_url().'audio/'.$device->audioFile);?>" type="audio/mp3">
+                    <source id='player' src="<?=base_url().'audio/'.$device->audioFile; ?>?<?=filemtime('./audio/'.$device->audioFile);?>" type="audio/mp3">
                     <input type='hidden' id='audioFile' name='audioFile' value='<?=$device->audioFile; ?>'>
                     <?php } ?>
                 </audio>

@@ -42,7 +42,7 @@
 	<?php foreach ($devices as $device) { ?>
 		<div class="col-md-3">
 			<a href="<?=base_url().'device/edit/'.$device->id;?>">
-				<img src="<?=base_url().'images/devices/'.$device->photo; ?>?<?=filemtime(base_url().'images/devices/'.$device->photo);?>" alt="your image" height="100">
+				<img src="<?=base_url().'images/devices/'.$device->photo; ?>?<?=filemtime('./images/devices/'.$device->photo);?>" alt="your image" height="100">
 				<br/>
 				<h6><?=$device->device_name; ?></h6>
 			</a>

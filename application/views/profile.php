@@ -37,7 +37,7 @@
 		<div class="col-md-3">
             <h6>Profile Photo</h6>
             <label for='photo'>
-	            <img id="preview" src="<?=base_url().'images/users/'.$user->photo; ?>?<?=filemtime(base_url().'images/users/'.$user->photo);?>" alt="your image" height="100" style="cursor:pointer;"/>
+	            <img id="preview" src="<?=base_url().'images/users/'.$user->photo; ?>?<?=filemtime('./images/users/'.$user->photo);?>" alt="your image" height="100" style="cursor:pointer;"/>
             </label>
             <input type='file' id="photo" name='photo' style="display:none;"/>
         </div>
