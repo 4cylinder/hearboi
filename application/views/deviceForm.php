@@ -146,6 +146,7 @@ $(function(){
     });
 
     var interval = null;
+    var version = 0; // helper variable to force browser to grab latest file
     // ajax call for ending a recording remotely
     $('#stopRecord').click(function(e){
         e.preventDefault();
@@ -166,8 +167,8 @@ $(function(){
                 if (data=="output.wav") {
                     clearInterval(interval);
                     $("#alertRow").html(alertSuccess+"File can now be played back.</strong></div>");
-                    $('#player').attr("src","");
-                    $('#player').attr("src","<?=base_url(); ?>audio/output.wav");
+                    $('#player').attr("src","<?=base_url(); ?>audio/output.wav?v="+version);
+                    version ++;
                     $('#player').attr("type","audio/wav");
                     var audio = $('#audio');
                     audio[0].pause();
