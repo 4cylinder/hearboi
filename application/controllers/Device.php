@@ -112,6 +112,7 @@ class Device extends CI_Controller {
 			$device['photo'] = $curr->photo;
 		} else {
 			$filename = $_FILES['photo']['name'];
+			$filename = str_replace(' ','_',$filename,);
 			$array = explode('.', $filename);
 			$extension = end($array);
 			$device['photo'] = $device['id'].".".$extension;
