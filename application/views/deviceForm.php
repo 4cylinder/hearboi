@@ -94,7 +94,9 @@
             <div class="col-md-2"><label class="control-label">AUDIO</label></div>
             <div class="col-md-2">
                 <a href='#' class='btn btn-info' id='startRecord'>Start<i class="fa fa-microphone" aria-hidden="true"></i></a>
+                <!--
                 <a href='#' class='btn btn-info' id='stopRecord'><i class="fa fa-stop" aria-hidden="true"></i>Stop</a>
+                -->
             </div>
             <div class="col-md-2">
                 <label>Audio File:</label>
@@ -136,7 +138,8 @@ $(function(){
         e.preventDefault();
         $.get("<?=base_url();?>device/record/start", function(data,status){
             if (status=='success'){
-                $("#alertRow").html(alertSuccess+"Recording in progress.</strong></div>");
+                $("#alertRow").html(alertSuccess+"Recording in progress. Waiting for upload.</strong></div>");
+                interval = setInterval(listen,2000);
             } else {
                 $("#alertRow").html(alertWarning+"Failed to start recording.</strong></div>");   
             }
@@ -146,7 +149,7 @@ $(function(){
     var interval = null;
     var version = 0; // helper variable to force browser to grab latest file
     // ajax call for ending a recording remotely
-    $('#stopRecord').click(function(e){
+    /*$('#stopRecord').click(function(e){
         e.preventDefault();
         $.get("<?=base_url();?>device/record/stop", function(data,status){
             if (status=='success'){
@@ -156,7 +159,7 @@ $(function(){
                 $("#alertRow").html(alertWarning+"Failed to stop recording.</strong></div>");   
             }
         });
-    });
+    });*/
 
     function listen(){
         $.get({
@@ -164,7 +167,7 @@ $(function(){
             success: function(data){
                 if (data=="output.wav") {
                     clearInterval(interval);
-                    $("#alertRow").html(alertSuccess+"File can now be played back.</strong></div>");
+                    $("#alertRow").html(alertSuccess+"Recorded file can now be played back.</strong></div>");
                     $('#player').attr("src","<?=base_url(); ?>audio/output.wav?v="+version);
                     version ++;
                     $('#player').attr("type","audio/wav");
