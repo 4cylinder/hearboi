@@ -140,7 +140,7 @@ class Device extends CI_Controller {
 	}
 
 	// Call SMS Gateway to send alert text
-	public function sendSMS($deviceId) {
+	public function sendSMS($deviceId, $soundType) {
 		// Number to text
 		$this->load->model('user_model');
 		$this->load->model('device_model');
@@ -150,7 +150,7 @@ class Device extends CI_Controller {
 		if ($device->allow_notif=="on") {
 			$phone = $user->phone;
 
-			$msg = urlencode("Interactive Device Design SMS Gateway Test");
+			$msg = urlencode("Hearboi Alert: Heard ".$soundType);
 			$username = $this->config->item('sms_username');
 			$password = $this->config->item('sms_password');
 			$url = "https://www.textmagic.com/app/api?username=".$username."&password=".$password."&cmd=send&text=".$msg."&phone=".$phone."&unicode=1";
