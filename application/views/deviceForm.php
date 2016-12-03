@@ -75,11 +75,13 @@
             <?php } ?>
             </div>
             <br/>
-            <div class="col-md-2"><label class="control-label">TYPE</label></div>
+            <div class="col-md-2"><label class="control-label">SOUND TYPE</label></div>
             <div class="col-md-2">
-                <select class="form-control" id="device_type" name="device_type">
-                    <option value="DEFAULT">DEFAULT</option>
-                </select>
+            <?php if ($title=="NEW DEVICE") {?>
+                <input class="form-control input-sm" placeholder="Doorbell" type="text" name="sound_type" id="sound_type" required>
+            <?php } else if ($title=="EDIT DEVICE") {?>
+                <input class="form-control input-sm" value="<?=$device->sound_type;?>" type="text" name="sound_type" id="sound_type" required>
+            <?php } ?>
             </div>
         </div>
         <div class="row">

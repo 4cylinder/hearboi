@@ -28,7 +28,7 @@ class Device_model extends CI_Model {
 		$this->db->insert("devices", 
 			array('location' => $device['location'],
 				'device_name' => $device['device_name'],
-				'device_type' => $device['device_type'],
+				'sound_type' => $device['sound_type'],
 				'allow_notif' => $device['allow_notif']));
 		return $this->db->insert_id();
 	}
@@ -39,7 +39,7 @@ class Device_model extends CI_Model {
 		return $this->db->update("devices", 
 			array('location' => $device['location'],
 				'device_name' => $device['device_name'],
-				'device_type' => $device['device_type'],
+				'sound_type' => $device['sound_type'],
 				'allow_notif' => $device['allow_notif'],
 				'photo' => $device['photo'],
 				'audioFile' => $device['audioFile']));

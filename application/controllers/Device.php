@@ -45,7 +45,7 @@ class Device extends CI_Controller {
 		// normal form elements
 		$device['device_name'] = $this->input->post('device_name');
 		$device['location'] = $this->input->post('location');
-		$device['device_type'] = $this->input->post('device_type');
+		$device['sound_type'] = $this->input->post('sound_type');
 		$device['audioFile'] = $this->input->post('audioFile');
 
 		if($this->input->post('allow_notif')){
@@ -91,7 +91,7 @@ class Device extends CI_Controller {
 		$device['id'] = $this->input->post('deviceId');
 		$device['device_name'] = $this->input->post('device_name');
 		$device['location'] = $this->input->post('location');
-		$device['device_type'] = $this->input->post('device_type');
+		$device['sound_type'] = $this->input->post('sound_type');
 		$device['audioFile'] = $this->input->post('audioFile');
 
 		if($this->input->post('allow_notif')){
