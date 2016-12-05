@@ -179,6 +179,12 @@ class Device extends CI_Controller {
 		        $response['message'] = 'failure';
 		        echo json_encode($response);
 			}
+			$sound_type = "".$this->input->get('sound_type');
+			if ($sound_type=="") 
+				$sound_type = "Doorbell";
+			// set sound type for hearboi to listen on
+			$this->db->where('id',2);
+			$this->db->update("record", array('status'=>$sound_type));
 		} else if ($cmd=="stop") { // stop recording audio
 			$this->db->where('id',1);
 			if ($this->db->update("record", array('status'=>'STOP'))){
@@ -200,6 +206,10 @@ class Device extends CI_Controller {
 			$config['allowed_types'] = 'mp3|wav|ogg|midi';
 			$this->load->library('upload', $config);
 			$this->upload->do_upload('audioFile');
+			// echo sound type for hearboi device
+			$query = $this->db->get_where('record',array('id' => 2));
+			$data = $query->result_array();
+			echo($data[0]['status']);
 		} else if ($cmd=="download"){ // deviceForm view queries this to let user test recordings
 			if (file_exists("./audio/output.wav")) {
 				echo "output.wav";

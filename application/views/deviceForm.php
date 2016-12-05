@@ -138,12 +138,15 @@ $(function(){
     // ajax call for starting a recording remotely
     $('#startRecord').click(function(e){
         e.preventDefault();
-        $.get("<?=base_url();?>device/record/start", function(data,status){
-            if (status=='success'){
+        $.get({
+            url: "<?=base_url();?>device/record/start",
+            data: { sound_type: $('#sound_type').val()},
+            success: function(data){
                 $("#alertRow").html(alertSuccess+"Recording in progress. Waiting for upload.</strong></div>");
                 interval = setInterval(listen,2000);
-            } else {
-                $("#alertRow").html(alertWarning+"Failed to start recording.</strong></div>");   
+            },
+            error: function(){
+                $("#alertRow").html(alertWarning+"Failed to start recording.</strong></div>");  
             }
         });
     });
