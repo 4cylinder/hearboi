@@ -206,16 +206,18 @@ class Device extends CI_Controller {
 			$config['allowed_types'] = 'mp3|wav|ogg|midi';
 			$this->load->library('upload', $config);
 			$this->upload->do_upload('audioFile');
-			// echo sound type for hearboi device
-			$query = $this->db->get_where('record',array('id' => 2));
-			$data = $query->result_array();
-			echo($data[0]['status']);
+			
 		} else if ($cmd=="download"){ // deviceForm view queries this to let user test recordings
 			if (file_exists("./audio/output.wav")) {
 				echo "output.wav";
 			} else {
 				echo "default.mp3";
 			}
+		} else if ($cmd=="sound") {
+			// echo sound type for hearboi device
+			$query = $this->db->get_where('record',array('id' => 2));
+			$data = $query->result_array();
+			echo($data[0]['status']);
 		}
 	}
 }
