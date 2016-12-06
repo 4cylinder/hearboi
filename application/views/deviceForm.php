@@ -152,13 +152,12 @@ $(function(){
         });
     });
 
-    $('#commitSound').click(function(){
+    $('#commitSound').click(function(e){
         e.preventDefault();
         $.get({
             url: "<?=base_url();?>device/record/allow_commit",
-            data: { sound_type: $('#sound_type').val()},
             success: function(data){
-                $("#alertRow").html(alertSuccess+"Recording in progress. Waiting for upload.</strong></div>");
+                $("#alertRow").html(alertSuccess+"Sound has been committed.</strong></div>");
                 interval = setInterval(listen,2000);
             },
             error: function(){
