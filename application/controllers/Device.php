@@ -165,6 +165,10 @@ class Device extends CI_Controller {
 	// remote control of audio recording, and status display
 	public function record($cmd) {
 		if ($cmd=="start") { // start recording audio
+			// first disable commit-ability
+			$this->db->where('id',3);
+			$this->db->update("record", array('status'=>'NO'));
+			// then allow recording
 			$this->db->where('id',1);
 			if ($this->db->update("record", array('status'=>'START'))){
 				$response['status'] = true;
@@ -216,6 +220,15 @@ class Device extends CI_Controller {
 		} else if ($cmd=="sound") {
 			// echo sound type for hearboi device
 			$query = $this->db->get_where('record',array('id' => 2));
+			$data = $query->result_array();
+			echo($data[0]['status']);
+		} else if ($cmd=="allow_commit") {
+			// allow committing of new sound
+			$this->db->where('id',3);
+			$this->db->update("record", array('status'=>'YES'));
+		} else if ($cmd=="commit") {
+			// echo commit-ability for hearboi device
+			$query = $this->db->get_where('record',array('id' => 3));
 			$data = $query->result_array();
 			echo($data[0]['status']);
 		}

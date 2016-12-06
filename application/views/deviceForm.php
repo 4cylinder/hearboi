@@ -96,9 +96,7 @@
             <div class="col-md-2"><label class="control-label">AUDIO</label></div>
             <div class="col-md-2">
                 <a href='#' class='btn btn-info' id='startRecord'>Start<i class="fa fa-microphone" aria-hidden="true"></i></a>
-                <!--
-                <a href='#' class='btn btn-info' id='stopRecord'><i class="fa fa-stop" aria-hidden="true"></i>Stop</a>
-                -->
+                <a href='#' class='btn btn-info' id='commitSound'><i class="fa fa-stop" aria-hidden="true"></i>Commit</a>
             </div>
             <div class="col-md-2">
                 <label>Audio File:</label>
@@ -128,6 +126,8 @@
 </body>
 <script>
 $(function(){
+    // hide commit button
+    $('#commitSound').hide();
     // make code cleaner by sharing these vars
     var alertSuccess = "<div class='alert alert-success'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>";
     var alertWarning = "<div class='alert alert-warning'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>";
@@ -138,6 +138,7 @@ $(function(){
     // ajax call for starting a recording remotely
     $('#startRecord').click(function(e){
         e.preventDefault();
+        $('#commitSound').hide();
         $.get({
             url: "<?=base_url();?>device/record/start",
             data: { sound_type: $('#sound_type').val()},
@@ -151,6 +152,20 @@ $(function(){
         });
     });
 
+    $('#commitSound').click(function(){
+        e.preventDefault();
+        $.get({
+            url: "<?=base_url();?>device/record/allow_commit",
+            data: { sound_type: $('#sound_type').val()},
+            success: function(data){
+                $("#alertRow").html(alertSuccess+"Recording in progress. Waiting for upload.</strong></div>");
+                interval = setInterval(listen,2000);
+            },
+            error: function(){
+                $("#alertRow").html(alertWarning+"Failed to commit sound.</strong></div>");  
+            }
+        });
+    });
     var interval = null;
     var version = 0; // helper variable to force browser to grab latest file
     // ajax call for ending a recording remotely
@@ -180,6 +195,7 @@ $(function(){
                     audio[0].pause();
                     audio[0].load();
                     $('#audioFile').val("output.wav");
+                    $('#commitSound').show();
                 }
             },
             error: function(){
